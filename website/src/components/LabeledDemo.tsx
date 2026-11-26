@@ -30,7 +30,9 @@ export const LabeledDemo = () => {
     // Keep the outline inside the window's visible area (the snippet list scrolls).
     const top = Math.max(r.top - o.top, 0)
     const bottom = Math.min(r.bottom - o.top, o.height)
-    setBox({ left: r.left - o.left, top, width: r.width, height: Math.max(bottom - top, 0) })
+    // A sliver at the edge of the scroll area isn't worth outlining.
+    if (bottom - top < 24) { setBox(null); return }
+    setBox({ left: r.left - o.left, top, width: r.width, height: bottom - top })
     setSize({ w: o.width, h: o.height })
   }, [])
 
@@ -46,6 +48,19 @@ export const LabeledDemo = () => {
     else measure(part)
   }
   const onFocus = (e: FocusEvent) => setActive(fromEvent(e.target))
+
+  // Pointing at a feature in the list scrolls the demo's sidebar so that part
+  // shows (the snippet list sits below the colors and templates sections).
+  const reveal = (part: Part) => {
+    const el = wrap.current?.querySelector<HTMLElement>(`[data-part="${part}"]`)
+    const scroller = el?.closest<HTMLElement>('.overflow-y-auto')
+    if (el && scroller) {
+      const r = el.getBoundingClientRect()
+      const b = scroller.getBoundingClientRect()
+      if (r.top < b.top || r.top > b.bottom - 60) scroller.scrollTop += r.top - b.top - 8
+    }
+    setActive(part)
+  }
 
   const feature = active ? FEATURES[PARTS.indexOf(active)] : null
   const calloutLeft = box ? Math.min(Math.max(box.left + box.width + PAD + 28, SIDEBAR_W + 28), size.w - CALLOUT_W - 12) : 0
@@ -75,21 +90,27 @@ export const LabeledDemo = () => {
         </AnimatePresence>
       </div>
 
-      <ul className="mt-10 mb-0 list-none border-b border-ink p-0">
+      {/* Compact numbered grid: point at a feature and the demo above outlines it. */}
+      <ol className="mt-10 mb-0 grid list-none grid-cols-1 gap-x-6 p-0 sm:grid-cols-2 lg:grid-cols-4">
         {FEATURES.map((f, i) => {
           const on = active === PARTS[i]
           return (
-            <li key={f.title} className="border-t border-ink">
-              <button type="button" onMouseEnter={() => setActive(PARTS[i])} onMouseLeave={() => setActive(null)}
-                onFocus={() => setActive(PARTS[i])} onBlur={() => setActive(null)}
-                className="grid w-full cursor-default grid-cols-12 gap-x-4 gap-y-1 border-0 bg-transparent px-0 py-4 text-left text-ink">
-                <span className={`t-title col-span-12 transition-colors md:col-span-4 ${on ? 'text-signal' : ''}`}>{f.title}</span>
-                <span className="t-body col-span-12 max-w-[38rem] text-ink-2 md:col-span-8">{f.body}</span>
+            <li key={f.title} className={`border-t-2 transition-colors ${on ? 'border-signal' : 'border-ink'}`}>
+              <button type="button" onMouseEnter={() => reveal(PARTS[i])} onMouseLeave={() => setActive(null)}
+                onFocus={() => reveal(PARTS[i])} onBlur={() => setActive(null)}
+                className="grid h-full w-full cursor-default content-start gap-1.5 border-0 bg-transparent px-0 pt-3 pb-5 text-left sm:pb-7 text-ink">
+                <span className="t-label text-signal tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                <span className={`t-title transition-colors ${on ? 'text-signal' : ''}`}>{f.title}</span>
+                <span className="t-meta text-[0.875rem] text-ink-2">{f.body}</span>
               </button>
             </li>
           )
         })}
-      </ul>
+        <li className="hidden border-t-2 border-ink pt-3 lg:block [@media(hover:none)]:lg:hidden">
+          <span className="t-label text-muted">Tip</span>
+          <p className="t-meta mt-1.5 mb-0 text-[0.875rem] text-muted">Point at any feature to see where it lives in the app above.</p>
+        </li>
+      </ol>
     </div>
   )
 }
