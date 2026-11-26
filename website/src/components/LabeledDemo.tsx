@@ -62,29 +62,29 @@ export const LabeledDemo = () => {
           {box && feature && (
             <motion.div key={active} aria-hidden className="pointer-events-none absolute inset-0"
               initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }}>
-              <div className="absolute rounded-lg border-[3px] border-signal shadow-[0_0_0_4px_rgb(214_46_11/0.25)]"
+              <div className="absolute border-[3px] border-signal shadow-[0_0_0_4px_rgb(214_46_11/0.25)]"
                 style={{ left: box.left - PAD, top: box.top - PAD, width: box.width + PAD * 2, height: box.height + PAD * 2 }} />
               <div className="absolute hidden h-[3px] bg-signal md:block" style={{ left: lineX, top: lineY - 1.5, width: Math.max(calloutLeft - lineX, 0) }} />
-              <div className="absolute hidden border-l-4 border-signal bg-ink p-4 text-paper shadow-[0_18px_40px_rgb(0_0_0/0.35)] md:block"
+              <div className="absolute hidden border-l-4 border-signal bg-ink p-4 text-paper md:block"
                 style={{ left: calloutLeft, top: calloutTop, width: CALLOUT_W }}>
-                <div className="text-xl leading-tight font-black tracking-[-0.03em] text-paper">{feature.title}</div>
-                <p className="mt-2 mb-0 text-[15px] leading-snug font-medium text-paper/85">{feature.body}</p>
+                <div className="t-title text-paper">{feature.title}</div>
+                <p className="t-meta mt-2 mb-0 text-paper/85">{feature.body}</p>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      <ul className="mt-8 mb-0 grid list-none grid-cols-12 gap-x-4 gap-y-6 p-0">
+      <ul className="mt-10 mb-0 list-none border-b border-ink p-0">
         {FEATURES.map((f, i) => {
           const on = active === PARTS[i]
           return (
-            <li key={f.title} className="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-2 xl:[&:nth-child(1)]:col-span-3 xl:[&:nth-child(4)]:col-span-3">
+            <li key={f.title} className="border-t border-ink">
               <button type="button" onMouseEnter={() => setActive(PARTS[i])} onMouseLeave={() => setActive(null)}
                 onFocus={() => setActive(PARTS[i])} onBlur={() => setActive(null)}
-                className={`w-full cursor-default border-0 border-t-4 bg-transparent px-0 pt-3 text-left text-ink transition-colors ${on ? 'border-signal' : 'border-ink'}`}>
-                <span className={`block text-xl leading-tight font-black tracking-[-0.03em] ${on ? 'text-signal' : ''}`}>{f.title}</span>
-                <span className="mt-1.5 block text-[15px] leading-snug font-medium text-ink-2">{f.body}</span>
+                className="grid w-full cursor-default grid-cols-12 gap-x-4 gap-y-1 border-0 bg-transparent px-0 py-4 text-left text-ink">
+                <span className={`t-title col-span-12 transition-colors md:col-span-4 ${on ? 'text-signal' : ''}`}>{f.title}</span>
+                <span className="t-body col-span-12 max-w-[38rem] text-ink-2 md:col-span-8">{f.body}</span>
               </button>
             </li>
           )

@@ -64,14 +64,14 @@ export const AppDemo = () => {
   const outline = useMemo(() => lines.flatMap((l, i) => (/^\s*[[{][+.]*[^\]}\s]+[\]}]/.test(l) ? [{ line: i + 1, label: l.trim() }] : [])), [lines])
 
   return (
-    <div className="window-shadow relative grid h-[600px] overflow-hidden rounded-xl text-left text-[13px] leading-[1.4] md:grid-cols-[400px_minmax(0,1fr)]" style={{ background: C.bg, color: C.text }}>
+    <div className="window-edge relative flex h-[760px] flex-col overflow-hidden text-left md:grid md:h-[600px] text-[13px] leading-[1.4] md:grid-cols-[400px_minmax(0,1fr)]" style={{ background: C.bg, color: C.text }}>
       {/* Traffic lights sit inside the sidebar, like the real window */}
-      <span className="absolute top-[14px] left-[14px] z-10 flex gap-2" aria-hidden>
+      <span className="absolute top-[294px] left-[14px] z-10 flex gap-2 md:top-[14px]" aria-hidden>
         <span className="size-3 rounded-full bg-[#ff5f57]" /><span className="size-3 rounded-full bg-[#febc2e]" /><span className="size-3 rounded-full bg-[#28c840]" />
       </span>
 
       {/* Sidebar */}
-      <div className="flex min-h-0 flex-col border-r" style={{ borderColor: C.line }}>
+      <div className="flex min-h-0 flex-1 flex-col md:border-r" style={{ borderColor: C.line }}>
         <div className="px-3.5 pt-[38px] pb-2.5">
           <div className="mb-2 text-[15px] font-bold">Archie Editor</div>
           <div className="flex gap-1" aria-hidden>
@@ -164,8 +164,8 @@ export const AppDemo = () => {
       </div>
 
       {/* Google Docs, drawn: no logos */}
-      <div className="hidden min-h-0 flex-col bg-[#f9fbfd] text-[#1f1f1f] md:flex">
-        <div className="flex items-center gap-2.5 px-3 pt-2.5">
+      <div className="order-first flex h-[280px] min-h-0 flex-none flex-col bg-[#f9fbfd] text-[#1f1f1f] md:order-none md:h-auto">
+        <div className="hidden items-center gap-2.5 px-3 pt-2.5 md:flex">
           <span className="flex h-8 w-6 flex-col items-center justify-center gap-[3px] rounded-sm bg-[#4285f4]/90" aria-hidden><span className="h-0.5 w-3 bg-white" /><span className="h-0.5 w-3 bg-white" /><span className="h-0.5 w-3 bg-white" /></span>
           <div>
             <div className="text-[16px] leading-tight">Summer lineup</div>
@@ -173,10 +173,10 @@ export const AppDemo = () => {
           </div>
           <span className="ml-auto rounded-full bg-[#c2e7ff] px-4 py-1.5 text-[13px] font-medium">Share</span>
         </div>
-        <div className="mx-3 mt-2 flex h-9 items-center gap-3 rounded-full bg-[#edf2fa] px-4 text-[13px] text-[#444]" aria-hidden>
+        <div className="mx-3 mt-2 hidden h-9 items-center gap-3 rounded-full bg-[#edf2fa] px-4 text-[13px] text-[#444] md:flex" aria-hidden>
           <span>100%</span><span className="h-4 w-px bg-[#c7c7c7]" /><span>Normal text</span><span className="h-4 w-px bg-[#c7c7c7]" /><span>Arial</span><span className="h-4 w-px bg-[#c7c7c7]" /><span>11</span><span className="font-bold">B</span><span className="italic">I</span><span className="underline">U</span>
         </div>
-        <div className="mt-2 h-5 border-y border-[#e3e3e3] bg-white" aria-hidden />
+        <div className="mt-2 hidden h-5 border-y border-[#e3e3e3] bg-white md:block" aria-hidden />
         <div className="min-h-0 flex-1 overflow-y-auto px-6 pt-4">
           <div className="mx-auto min-h-[520px] max-w-[540px] bg-white px-14 py-12 shadow-[0_1px_3px_rgb(0_0_0/0.12)]" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
             {lines.map((line, i) => {

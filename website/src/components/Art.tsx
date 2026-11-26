@@ -1,15 +1,16 @@
-// Real screenshots of the app (see public/screens/PROVENANCE.md).
-export const Screenshot = ({ name, alt, eager = false }: { name: string; alt: string; eager?: boolean }) => (
-  <img
-    src={`./screens/app-${name}.webp`}
-    srcSet={`./screens/app-${name}.webp 1000w, ./screens/app-${name}@2x.webp 2000w`}
-    sizes="(min-width: 1024px) 1000px, 100vw"
-    width={1000}
-    height={640}
-    loading={eager ? 'eager' : 'lazy'}
-    decoding="async"
-    alt={alt}
-    className="h-auto w-full"
-  />
+// Close-up of the real app catching two mistakes (see public/screens/PROVENANCE.md).
+export const HeroShot = () => (
+  <picture>
+    <source media="(max-width: 639px)" srcSet="./screens/hero-issues-phone.webp" width={838} height={440} />
+    <img
+      src="./screens/hero-issues.webp"
+      srcSet="./screens/hero-issues.webp 755w, ./screens/hero-issues@2x.webp 1510w"
+      sizes="(min-width: 768px) 912px, 100vw"
+      width={755}
+      height={220}
+      decoding="async"
+      alt="Archie Editor's Issues tab listing an unclosed {tickets} block and a duplicate price key, beside the doc lines that cause them"
+      className="block h-auto w-full"
+    />
+  </picture>
 )
-

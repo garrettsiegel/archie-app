@@ -17,10 +17,21 @@ html { background: var(--color-paper); scroll-behavior: smooth; scroll-padding-t
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { margin: 0; background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; text-wrap: pretty; }
 h1, h2, h3 { text-wrap: balance; }
+
+/* Type scale: six steps (112 / 64 / 32 / 20 / 17 / 13). Archivo does it all:
+   900 for display, 750 for titles, 400 for reading, a wide cut for labels. */
+@layer components {
+  .t-hero { font-size: clamp(2.4rem, 7.8vw, 7rem); line-height: 0.94; font-weight: 900; letter-spacing: -0.03em; word-spacing: 0.05em; }
+  .t-section { font-size: clamp(2.25rem, 4.5vw, 4rem); line-height: 0.98; font-weight: 900; letter-spacing: -0.025em; word-spacing: 0.04em; }
+  .t-lead { font-size: clamp(1.5rem, 2.25vw, 2rem); line-height: 1.12; font-weight: 750; letter-spacing: -0.015em; }
+  .t-title { font-size: 1.25rem; line-height: 1.2; font-weight: 750; letter-spacing: -0.008em; }
+  .t-body { font-size: 1.0625rem; line-height: 1.5; font-weight: 400; }
+  .t-meta { font-size: 0.8125rem; line-height: 1.5; font-weight: 400; }
+  .t-label { font-size: 0.8125rem; line-height: 1.5; font-weight: 700; font-stretch: 125%; letter-spacing: 0.08em; text-transform: uppercase; }
+}
 ::selection { background: var(--color-signal); color: #fff; }
 :focus-visible { outline: 3px solid var(--color-signal); outline-offset: 3px; }
 * { scrollbar-width: thin; scrollbar-color: var(--color-ink) transparent; }
 
-.window-shadow {
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), 0 24px 60px -20px rgb(0 0 0 / 0.35);
-}
+/* The app is quoted flat: square, with a thin ink edge. */
+.window-edge { border: 1px solid var(--color-ink); }

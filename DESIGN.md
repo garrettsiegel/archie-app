@@ -16,65 +16,50 @@ colors:
 typography:
   display:
     fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.9rem, 8.4vw, 8.2rem)"
+    fontSize: "clamp(2.4rem, 7.8vw, 7rem)"
     fontWeight: 900
-    lineHeight: 0.86
-    letterSpacing: "-0.055em"
+    lineHeight: 0.94
+    letterSpacing: "-0.03em"
   headline:
     fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.2rem, 5vw, 4.5rem)"
-    fontWeight: 900
-    lineHeight: 0.9
-    letterSpacing: "-0.05em"
-  title:
-    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)"
+    fontSize: "clamp(2.25rem, 4.5vw, 4rem)"
     fontWeight: 900
     lineHeight: 0.98
-    letterSpacing: "-0.04em"
-  promise:
-    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(1.6rem, 2.6vw, 2.1rem)"
-    fontWeight: 900
-    lineHeight: 1.25
-    letterSpacing: "-0.035em"
-  numeral:
-    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "3.75rem"
-    fontWeight: 900
-    lineHeight: 1
-    letterSpacing: "-0.05em"
-    fontFeature: "tnum"
+    letterSpacing: "-0.025em"
   lead:
     fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "1.125rem"
-    fontWeight: 500
-    lineHeight: 1.375
+    fontSize: "clamp(1.5rem, 2.25vw, 2rem)"
+    fontWeight: 750
+    lineHeight: 1.12
+    letterSpacing: "-0.015em"
+  title:
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "1.25rem"
+    fontWeight: 750
+    lineHeight: 1.2
+    letterSpacing: "-0.008em"
   body:
     fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "17px"
-    fontWeight: 500
-    lineHeight: 1.375
-  body-sm:
+    fontSize: "1.0625rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  meta:
     fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "15px"
-    fontWeight: 500
-    lineHeight: 1.375
+    fontSize: "0.8125rem"
+    fontWeight: 400
+    lineHeight: 1.5
   label:
     fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "14px"
+    fontSize: "0.8125rem"
     fontWeight: 700
-  caption:
-    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "13px"
-    fontWeight: 500
+    letterSpacing: "0.08em"
+    fontVariation: "'wdth' 125"
   mono:
     fontFamily: "ui-monospace, SF Mono, Menlo, monospace"
-    fontSize: "12.5px"
+    fontSize: "13px"
     fontWeight: 600
 rounded:
   none: "0px"
-  app-window: "12px"
 spacing:
   gutter: "16px"
   page-x: "20px"
@@ -161,52 +146,42 @@ Pure black and white, one hot orange, and a quoted dark palette that belongs to 
 **Body Font:** Archivo Variable, medium/bold weights
 **Label/Mono Font:** system mono (ui-monospace, SF Mono, Menlo), only inside app imagery
 
-**Character:** One grotesque family doing everything, from 900-weight poster headlines down to 500-weight captions. Tight leading and negative tracking at large sizes; body stays medium weight so it holds up against the black display.
+**Character:** One grotesque family in three voices: 900 for display, 750 for titles, 400 for reading, plus a wide cut (125%) for the uppercase header label.
 
 ### Hierarchy
-- **Display** (900, clamp(2.9rem, 8.4vw, 8.2rem), 0.86): the hero headline only, spanning all 12 columns. Oversized on purpose: it is the poster.
-- **Headline** (900, clamp(2.2rem, 5vw, 4.5rem), 0.9): section heads ("Everything an ArchieML doc needs.", "Try it here.", "Install in a minute.").
-- **Title** (900, clamp(1.6rem, 2.8vw, 2.4rem), 0.98): feature row titles.
-- **Promise** (900, clamp(1.6rem, 2.6vw, 2.1rem), tight, signal orange): the single promise line under the hero rule.
-- **Numeral** (900, 3.75rem, 1, tabular): install step numbers.
-- **Lead** (500, 1.125rem, 1.375): hero pitch and section-head asides.
-- **Body** (500, 17px, 1.375, max ~24rem): feature descriptions.
-- **Body-sm** (500, 15px): spec-list descriptions; spec-list terms are 18px 900.
-- **Label** (700, 14px): nav links, download button (16px on the large button), footer links.
-- **Caption** (500, 13px, grey): version, size, architecture line.
+Six steps (112 / 64 / 32 / 20 / 17 / 13), set as classes in website/src/index.css.
+- **t-hero** (900, to 112px, 0.94, -0.03em): the headline only, broken "The Mac app / for ArchieML in / Google Docs."
+- **t-section** (900, to 64px, 0.98, -0.025em): every section head.
+- **t-lead** (750, to 32px): the orange promise line.
+- **t-title** (750, 20px): feature, spec and step titles; wordmark.
+- **t-body** (400, 17px, 1.5): all reading text, measure at most 38rem.
+- **t-meta** (400, 13px) and **t-label** (700, 13px, wide, uppercase, tracked).
 
 ### Named Rules
-**The Black Weight Rule.** Every heading is weight 900 with negative tracking (-0.02em to -0.055em, tighter as size grows). No light or regular display weights.
+**The Six Steps Rule.** No sizes outside the scale on page chrome.
 
-**The One Family Rule.** Archivo carries the whole page. Mono appears only where the app itself shows code.
+**The Open Display Rule.** Never track display tighter than -0.03em or lead it under 0.94; words and descenders must not touch.
+
+**The One Family Rule.** Archivo carries the whole page. Mono appears only where code or the app appears.
 
 ## Layout
 
 A 12-column grid (16px gutter) inside a 1280px max container with 20px side padding (32px from 640px). Every section, header and footer uses the same grid; nested blocks re-declare 12 columns so spans stay aligned.
 
-- **Folio strip:** sticky header, 4-col name / 4-col subject line / 4-col nav, closed by a full-width 4px black rule.
-- **Hero:** 12-col headline; a 4px rule; then promise (5 cols) / pitch (4) / download (3); the screenshot below spans 11 then 10 centered columns.
-- **Feature rows:** each row opens with a 1px black rule and places text (4 cols) and close-up (4 to 8 cols) differently: text-left or text-right, art narrow or wide, offset starts. No two rows share a placement.
-- **Spec list:** 6 short items, 2 per row on mobile, 3 at md, 6 across at lg.
-- **Install band:** full-bleed black; four steps in 3-column spans at lg, each topped by a 4px white rule.
-- **Rhythm:** sections 96px apart (128px from 640px); feature rows 56px (80px). Everything collapses to 12-col full width on mobile.
+- **Folio strip:** sticky header closed by a 1px rule.
+- **Hero:** headline; 1px rule; promise (4) / pitch (5) / download (3); then a caption (3) beside a flat close-up of the Issues list catching two mistakes (9). Phones get a tighter crop.
+- **Features:** the working demo, then one ruled row per feature (title 4 cols, body 8). Hovering a row or a part outlines it and shows a label.
+- **Also in the box:** two columns of ruled rows, each with a 96x56 ruled box drawn in one style.
+- **Install band:** full-bleed black; four steps under 1px white rules; orange step number inline with its title.
+- **Rules:** 4px only to open a section; 1px everywhere else.
 
 ## Elevation & Depth
 
-The page is flat. Depth exists only in the app imagery, where it mimics a macOS window.
-
-### Shadow Vocabulary
-- **App window** (`box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), 0 24px 60px -20px rgb(0 0 0 / 0.35)`): the interactive demo window.
-- **App fragment** (`box-shadow: 0 24px 40px rgb(17 19 18 / 0.18)`): the drawn Preview and Publish fragments.
-
-### Named Rules
-**The Flat Poster Rule.** Page chrome never casts a shadow. Rules and inversion, not elevation, separate content.
+Flat throughout. The app is quoted with a 1px black edge; no shadows.
 
 ## Shapes
 
-Square everywhere on the page: buttons, bands, rules, focus ring (3px orange outline, 3px offset). The 12px window radius belongs to app imagery only (demo window, fragments, and the corners drawn into the screenshots). Rules come in two weights: 4px for section and folio breaks, 1px between feature rows.
-
-**The Square Chrome Rule.** If it belongs to the page, it has no radius. If it has a radius, it is a picture of the app.
+Square page chrome and square app frames. Radius survives only inside the drawn app UI itself.
 
 ## Components
 
@@ -222,26 +197,21 @@ Blunt and loud: a square orange block.
 Folio strip: app icon and name in 900 weight, a centered uppercase bold subject line ("ArchieML · Google Docs · macOS") from 640px, then bold 14px links (Features and Install from 1024px, GitHub with icon) and the small download. Links are black, orange on hover. Background is 95% white with a blur so the 4px rule stays crisp over scrolled content.
 
 ### Section Head
-A 4px black rule, then a headline across 8 columns and an optional 4-column lead aside.
-
-### Feature Row
-1px top rule, title plus body in 4 columns, and one close-up crop (Insert list, Data JSON, Issues list) or drawn fragment (Preview, Publish), each placed in a different column range.
+A 4px black rule, then a headline across 8 columns and an optional 4-column body aside.
 
 ### App Imagery (signature)
-Real dark-theme screenshots (provenance in website/public/screens/PROVENANCE.md), close-ups cut from the same captures, and drawn fragments and a working demo in the app's quoted palette. The demo is a full window (600px tall, 400px sidebar) with a drawn Google Docs page; inserted lines flash mint for 1.2s unless reduced motion is set.
+A real dark-theme close-up (provenance in website/public/screens/PROVENANCE.md) and a working demo in the app's quoted palette, both with a flat 1px edge. On phones the demo shows the doc first, then the sidebar.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** snap every block to the 12-column grid and vary placements between repeated rows.
-- **Do** separate sections with 4px black rules (white on the black band) and feature rows with 1px rules.
-- **Do** set all headings in Archivo 900 with negative tracking.
-- **Do** keep orange to the download fill, the promise line and the install numerals, plus hover, focus and selection states.
-- **Do** show the product with real screenshots or crops, and record their provenance.
+- **Do** use only the six type steps and snap blocks to the 12-column grid.
+- **Do** keep 4px rules for section openings.
+- **Do** keep orange to the download, the promise line, step numbers and interaction states.
+- **Do** record screenshot provenance.
 
 ### Don't:
-- **Don't** round or shadow page chrome; radius and shadow mean "this is the app".
-- **Don't** use app palette colors (mint, charcoal) outside app imagery.
-- **Don't** add a second accent hue, gradients or tinted panels to the page.
-- **Don't** build card rows or repeat one feature-row layout.
-- **Don't** set orange small text on black; it fails contrast there.
+- **Don't** set body text above weight 400 or titles at 900.
+- **Don't** round or shadow page chrome or app frames.
+- **Don't** show the same view of the app twice.
+- **Don't** add a second accent hue, gradients or tinted panels.
