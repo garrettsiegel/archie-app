@@ -1,0 +1,205 @@
+{
+  "title": "Choose the look for the Archie Editor download site",
+  "question": "Two directions for the public download page. Keep the first, take the alternate, use the familiar standard, or ask for a fresh pair.",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "label": "The Type Case",
+      "kicker": "THE ROLL",
+      "lineage": "a printer's California job case and composing stick, the drawer of lead type every story was once set from",
+      "thesis": "ArchieML's primitives are sorts in a type case: you pick { } [ ] * : from labeled compartments and set them into a line, and the page proofs your data as it is set.",
+      "palette": [
+        "#2a1d14",
+        "#c9a06a",
+        "#7d8288",
+        "#e9e2d3",
+        "#d2462f"
+      ],
+      "materials": [
+        "oak case compartments",
+        "lead type and brass rule",
+        "proof press ink on newsprint"
+      ],
+      "viewport": "The first viewport is an open type case seen from above: each compartment holds one ArchieML primitive as a cast sort, labeled like a case. The headline is set in wood type across the top rail with a clear Download for Mac button cast in brass. Clicking a sort drops it into a composing stick below, building a small live doc whose JSON proof prints beside it.",
+      "risk": "Can tip into nostalgia costume if the wood and lead are rendered loosely; it has to read as a precise, working tool, with the case grid strict and the type crisp.",
+      "raised": [
+        {
+          "from": "challenger-comic",
+          "raise": "Proofs print slightly out of register while the data has a mistake and snap into perfect register the moment it parses cleanly, so 'valid' is something you see, not a badge."
+        },
+        {
+          "from": "challenger-oscilloscope",
+          "raise": "One strict compartment grid measures every layout on the page, from the hero case to the feature list, so nothing floats free of the case."
+        },
+        {
+          "from": "challenger-ebru",
+          "raise": "The whole page is one case, worked in one pass: sections are drawers of the same cabinet, not separate pages stacked under a hero."
+        }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "kind": "pick",
+      "label": "The Galley Proof",
+      "kicker": "IMPECCABLE\u2019S PICK",
+      "lineage": "newsroom galley proofs marked up by the copy desk in red and non-repro blue pencil",
+      "thesis": "Archie Editor is the copy desk that never sleeps: your doc comes back as a galley proof with every mistake marked in the margin before it ships.",
+      "palette": [
+        "#f1efe8",
+        "#1c1c1a",
+        "#d23b2a",
+        "#5a8fd6"
+      ],
+      "materials": [
+        "long newsprint galley strips",
+        "red proof marks",
+        "non-repro blue pencil"
+      ],
+      "viewport": "A long galley strip of ArchieML runs down the first viewport with proofreader's marks in the margin (unclosed block, duplicate key) and the clean JSON set beside it. The headline sits in the slug line; Download for Mac is a red stamp.",
+      "risk": "The most familiar choice: newsroom-paper pages are where most runs in this category land, close to the editorial-broadsheet look."
+    },
+    {
+      "id": "challenger-comic",
+      "kind": "challenger",
+      "catalogId": "pop-culture-shelf-benday-comic-page",
+      "label": "Ben-Day Comic Page",
+      "verdict": "declined",
+      "lineage": "silver-age comic pages on pulp",
+      "palette": [
+        "#f2e6c9",
+        "#1e5fb4",
+        "#e0322b",
+        "#f7d43a"
+      ],
+      "materials": [
+        "ben-day dots",
+        "four-color misregistration"
+      ],
+      "case": "Fuses poorly: data editors and developers don't see their work in comic panels, and the play muddies what the app does.",
+      "kept": "Register as state: things out of register until they are right."
+    },
+    {
+      "id": "challenger-oscilloscope",
+      "kind": "challenger",
+      "catalogId": "scientific-notation-oscilloscope-signal-bench",
+      "label": "Oscilloscope Bench",
+      "verdict": "declined",
+      "lineage": "CRT oscilloscope on a signal bench",
+      "palette": [
+        "#0b0f0c",
+        "#43ff6a",
+        "#8a9290",
+        "#ffb23f"
+      ],
+      "materials": [
+        "phosphor trace",
+        "etched graticule"
+      ],
+      "case": "Fuses poorly: an instrument costume for a writing tool; editors would read it as an engineering product.",
+      "kept": "Everything measured against one strict grid."
+    },
+    {
+      "id": "challenger-ebru",
+      "kind": "challenger",
+      "catalogId": "medium-native-ebru-floated-pigment",
+      "label": "Ebru Marbling",
+      "verdict": "declined",
+      "lineage": "floated-pigment marbling",
+      "palette": [
+        "#1d3c6e",
+        "#e7b33d",
+        "#c2412d",
+        "#efe7d6"
+      ],
+      "materials": [
+        "floating pigment",
+        "combed figures"
+      ],
+      "case": "Fuses poorly: beautiful but says nothing about structured data or checking it.",
+      "kept": "One surface, worked in one pass."
+    },
+    {
+      "id": "challenger-leather",
+      "kind": "challenger",
+      "catalogId": "digital-design-canon-skeuomorph-leather-studio",
+      "label": "Leather Studio",
+      "verdict": "declined",
+      "lineage": "skeuomorphic leather and linen",
+      "palette": [
+        "#8a5a33",
+        "#e9dfcc",
+        "#5a3a22"
+      ],
+      "materials": [
+        "stitched leather",
+        "linen",
+        "walnut"
+      ],
+      "case": "Fuses poorly: decorative objects with no tie to writing data.",
+      "kept": "Honest material rendering, real shadows, a pressed state you can feel."
+    },
+    {
+      "id": "challenger-multiplane",
+      "kind": "challenger",
+      "catalogId": "cinema-cinematography-editing-multiplane-cel-dawn",
+      "label": "Multiplane Dawn",
+      "verdict": "declined",
+      "lineage": "multiplane cel animation",
+      "palette": [
+        "#2f4a3a",
+        "#9fb2b8",
+        "#3b2a1e",
+        "#f0a43a"
+      ],
+      "materials": [
+        "painted planes",
+        "mist"
+      ],
+      "case": "Fuses poorly: cinematic mood with no product mechanism in it.",
+      "kept": "Depth used to separate layers that do different jobs."
+    },
+    {
+      "id": "challenger-forge",
+      "kind": "challenger",
+      "catalogId": "metal-forging-patina-blacksmith-scale-shower",
+      "label": "Forge and Hammer",
+      "verdict": "declined",
+      "lineage": "power-hammer forging",
+      "palette": [
+        "#141210",
+        "#5b5f63",
+        "#ff7a1a"
+      ],
+      "materials": [
+        "hot iron",
+        "scale"
+      ],
+      "case": "Fuses poorly: brute force is the opposite of careful data entry.",
+      "kept": "One deliberate step per row, each one measured."
+    }
+  ],
+  "reroll": {
+    "registers": [
+      "safer",
+      "bolder"
+    ]
+  },
+  "canon": true,
+  "canonCard": {
+    "kind": "canon",
+    "label": "The category standard",
+    "thesis": "A clean, modern Mac-app download page: headline, big app screenshot, feature grid, download button, executed well.",
+    "palette": [
+      "#0d1117",
+      "#f5f5f4",
+      "#3ea66b"
+    ],
+    "materials": [
+      "clean grid",
+      "app screenshots"
+    ],
+    "viewport": "Headline and Download for Mac on the left, a large drawn app window on the right, features in a row below.",
+    "risk": "Looks like every other developer tool site."
+  }
+}

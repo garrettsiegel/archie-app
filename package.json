@@ -1,0 +1,69 @@
+{
+  "name": "archie",
+  "productName": "Archie Editor",
+  "version": "0.1.0",
+  "description": "Write ArchieML in Google Docs",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --mac",
+    "test": "node --test test/*.test.js",
+    "dist:dmg": "electron-builder --mac dmg --universal"
+  },
+  "build": {
+    "appId": "com.garrettsiegel.archie",
+    "productName": "Archie Editor",
+    "files": [
+      "main.js",
+      "preload.js",
+      "lib/**/*",
+      "sidebar/**/*",
+      "preview/**/*",
+      "build/icon.png",
+      "package.json",
+      "!node_modules/cpu-features/**",
+      "!node_modules/nan/**",
+      "!node_modules/buildcheck/**",
+      "!node_modules/ssh2/lib/protocol/crypto/build/**"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "build/icon.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        },
+        {
+          "target": "dir",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "identity": "-",
+      "extendInfo": {
+        "NSBluetoothAlwaysUsageDescription": "Archie Editor uses Bluetooth to sign in with a passkey on your phone."
+      },
+      "hardenedRuntime": false
+    },
+    "electronLanguages": [
+      "en"
+    ],
+    "dmg": {
+      "title": "Archie Editor",
+      "artifactName": "Archie-Editor-${version}.dmg"
+    }
+  },
+  "devDependencies": {
+    "electron": "^45.5.0",
+    "electron-builder": "^26.18.0"
+  },
+  "dependencies": {
+    "archieml": "^0.5.0",
+    "ssh2-sftp-client": "^12.1.1"
+  }
+}

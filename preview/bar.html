@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'">
+  <title>Live preview</title>
+  <link rel="stylesheet" href="../sidebar/sidebar.css">
+  <link rel="stylesheet" href="bar.css">
+</head>
+<body>
+  <div id="resize" class="edge" role="separator" aria-orientation="vertical" aria-label="Resize preview" title="Drag to resize"></div>
+
+  <header class="bar drag">
+    <span class="title">Live preview</span>
+    <button type="button" class="link no-drag" id="link-label" title="Change the project link"></button>
+    <span id="spinner" class="spinner" hidden aria-label="Loading"></span>
+    <span class="tools no-drag">
+      <button type="button" class="icon" id="reload" title="Reload preview" aria-label="Reload preview"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.5-3.6"/><path d="M13 2.5v3h-3"/></svg></button>
+      <button type="button" class="icon" id="external" title="Open in browser" aria-label="Open in browser"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7"/><path d="M13 3 4 12"/></svg></button>
+      <button type="button" class="icon" id="close" title="Close preview (⌘⇧P)" aria-label="Close preview"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+    </span>
+  </header>
+
+  <main id="setup" class="setup" hidden>
+    <h1 id="setup-title">See this doc in its project</h1>
+    <p id="setup-text" class="muted">Paste the project's QA or test link. The page will read this doc instead of the published data, so you can check your edits before publishing.</p>
+    <form id="url-form" class="stack">
+      <label for="url">Project link</label>
+      <input id="url" type="url" placeholder="https://qa.example.com/your-project/index.html" spellcheck="false" autocapitalize="off">
+      <div class="row">
+        <button type="submit" class="primary">Show preview</button>
+        <button type="button" id="cancel" hidden>Cancel</button>
+        <button type="button" id="unlink" hidden>Remove link</button>
+      </div>
+      <p class="hint">Works with pages that can read a Google Doc through <code>debug-content=doc</code> and <code>debug-gdoc-id</code>. Updates show after Docs saves, within about 30 seconds.</p>
+      <p id="error" class="message error" role="status"></p>
+    </form>
+  </main>
+
+  <p id="status" class="status message error" role="status" hidden></p>
+  <script src="bar.js"></script>
+</body>
+</html>

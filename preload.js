@@ -1,0 +1,42 @@
+const { contextBridge, ipcRenderer } = require('electron');
+
+const invoke = (channel) => (arg) => ipcRenderer.invoke(channel, arg);
+const listen = (channel) => (cb) => ipcRenderer.on(channel, (_e, value) => cb(value));
+
+contextBridge.exposeInMainWorld('archie', {
+  insert: invoke('insert'),
+  selection: invoke('selection'),
+  jump: invoke('jump'),
+  nav: invoke('nav'),
+  openUrl: invoke('open-url'),
+  docData: invoke('doc-data'),
+  refresh: invoke('refresh'),
+  copyJson: invoke('copy-json'),
+  exportJson: invoke('export-json'),
+  store: invoke('store'),
+  addSnippet: invoke('add-snippet'),
+  removeSnippet: invoke('remove-snippet'),
+  onNavState: listen('nav-state'),
+  onDocData: listen('doc-data'),
+  onStore: listen('store'),
+  onOpenPalette: listen('open-palette'),
+  onTogglePreview: listen('toggle-preview'),
+  sftpStatus: invoke('sftp-status'),
+  sftpConnect: invoke('sftp-connect'),
+  sftpDisconnect: invoke('sftp-disconnect'),
+  sftpConnectSaved: invoke('sftp-connect-saved'),
+  sftpRemove: invoke('sftp-remove'),
+  publishAgain: invoke('publish-again'),
+  sftpList: invoke('sftp-list'),
+  sftpMkdir: invoke('sftp-mkdir'),
+  sftpUpload: invoke('sftp-upload'),
+  chooseKey: invoke('choose-key'),
+  onSftpStatus: listen('sftp-status'),
+  setSidebarWidth: invoke('sidebar-width'),
+  previewToggle: invoke('preview-toggle'),
+  previewSetUrl: invoke('preview-set-url'),
+  previewAction: invoke('preview-action'),
+  previewResize: invoke('preview-resize'),
+  onPreviewState: listen('preview-state'),
+  onPreviewOpen: listen('preview-open'),
+});

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'">
+  <title>Archie Editor</title>
+  <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+  <header class="drag">
+    <div class="brand">Archie Editor</div>
+    <nav class="no-drag" aria-label="Document navigation">
+      <button type="button" class="icon" data-nav="back" id="back" title="Back" aria-label="Back"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+      <button type="button" class="icon" data-nav="reload" title="Reload doc" aria-label="Reload doc"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.5-3.6"/><path d="M13 2.5v3h-3"/></svg></button>
+      <button type="button" class="icon" data-nav="home" title="All docs" aria-label="All docs"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 7.5 8 3l5.5 4.5"/><path d="M4 6.5V13h8V6.5"/></svg></button>
+      <button type="button" class="icon" data-nav="external" title="Open in browser" aria-label="Open in browser"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7"/><path d="M13 3 4 12"/></svg></button>
+    </nav>
+    <div class="doc-row no-drag">
+      <div class="doc-title" id="doc-title">Google Docs</div>
+      <button type="button" class="preview-button" id="preview-toggle" title="Show this doc in its project page (⌘⇧P)" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg><span id="preview-label">Preview</span></button>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Panels">
+    <button type="button" role="tab" id="tab-insert" aria-controls="panel-insert" data-tab="insert" title="Insert"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg><span class="tab-label">Insert</span></button>
+    <button type="button" role="tab" id="tab-data" aria-controls="preview" data-tab="data" title="Data"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2.5H5a1.5 1.5 0 0 0-1.5 1.5v2.5L2.5 8l1 1.5V12A1.5 1.5 0 0 0 5 13.5h1"/><path d="M10 2.5h1A1.5 1.5 0 0 1 12.5 4v2.5l1 1.5-1 1.5V12a1.5 1.5 0 0 1-1.5 1.5h-1"/></svg><span class="tab-label">Data</span></button>
+    <button type="button" role="tab" id="tab-issues" aria-controls="preview" data-tab="issues" title="Issues"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2 14.5 13.5h-13z"/><path d="M8 6.5v3M8 11.5v.01"/></svg><span class="tab-label">Issues</span><span id="issue-count" class="count" hidden></span></button>
+    <button type="button" role="tab" id="tab-outline" aria-controls="preview" data-tab="outline" title="Outline"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 4h10M5.5 8H13M8 12h5"/></svg><span class="tab-label">Outline</span></button>
+    <button type="button" role="tab" id="tab-upload" aria-controls="upload" data-tab="upload" title="Publish"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 11V2.5M4.5 6 8 2.5 11.5 6"/><path d="M2.5 10.5v3h11v-3"/></svg><span class="tab-label">Publish</span></button>
+  </div>
+
+  <div class="field" data-for="insert">
+    <label for="name">Block name</label>
+    <input id="name" type="text" placeholder="e.g. headline, speakers" spellcheck="false" aria-describedby="name-hint">
+    <div id="name-hint" class="hint">Fills in {name} and [name]. Leave empty for a placeholder.</div>
+  </div>
+
+  <main id="panel-insert" role="tabpanel" aria-labelledby="tab-insert" data-for="insert">
+    <details id="recents-box">
+      <summary>Open a doc</summary>
+      <form id="open-form" class="open-form">
+        <input id="open-url" type="text" placeholder="Paste a Google Doc link" aria-label="Google Doc link" spellcheck="false">
+      </form>
+      <div id="recents"></div>
+    </details>
+
+    <label class="search">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>
+      <input id="filter" type="search" placeholder="Filter snippets" aria-label="Filter snippets" spellcheck="false">
+    </label>
+    <p id="no-match" class="muted empty" hidden>No snippets match.</p>
+
+    <section id="mine-section">
+      <h2>My snippets</h2>
+      <div id="mine"></div>
+      <button type="button" class="link" id="new-snippet">+ New snippet</button>
+      <form id="snippet-form" class="stack" hidden>
+        <input id="snippet-label" type="text" placeholder="Title, e.g. Speaker" required>
+        <textarea id="snippet-text" rows="6" placeholder="{$name}&#10;name: &#10;{}" spellcheck="false" required></textarea>
+        <div class="muted">$name is replaced by the Name field.</div>
+        <div class="row">
+          <button type="button" id="from-selection">Use highlighted text</button>
+          <button type="submit">Save</button>
+          <button type="button" id="cancel-snippet">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <div id="snippets"></div>
+  </main>
+
+  <footer id="status" role="status" data-for="insert">Click a snippet, or highlight text first to wrap it. ⌘⇧K searches · ⌘⇧D data.</footer>
+
+  <main id="preview" role="tabpanel" data-for="data issues outline">
+    <p id="notice" class="muted"></p>
+    <pre id="data"></pre>
+    <div id="issues"></div>
+    <div id="outline"></div>
+  </main>
+  <main id="upload" role="tabpanel" aria-labelledby="tab-upload" data-for="upload">
+    <p class="intro">Send this doc's JSON to your server over SFTP.</p>
+
+    <!-- Choose a saved server, or add one -->
+    <div id="server-pick" class="stack">
+      <label for="server-select">Server</label>
+      <select id="server-select"></select>
+      <div id="server-summary" class="summary" hidden>
+        <span id="server-detail" class="muted"></span>
+        <div class="row">
+          <button type="button" class="primary" id="server-connect">Connect</button>
+          <button type="button" id="server-edit">Edit</button>
+          <button type="button" id="server-remove">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <form id="sftp-form" class="stack" autocomplete="off" hidden>
+      <div class="pair">
+        <label class="grow">Server address <input id="sftp-host" type="text" placeholder="example.com" spellcheck="false" required></label>
+        <label class="port">Port <input id="sftp-port" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" value="22"></label>
+      </div>
+      <label>Username <input id="sftp-user" type="text" spellcheck="false" autocapitalize="off" required></label>
+      <fieldset class="segmented">
+        <legend>Sign in with</legend>
+        <input type="radio" name="sftp-auth" id="auth-password" value="password" checked><label for="auth-password">Password</label>
+        <input type="radio" name="sftp-auth" id="auth-key" value="key"><label for="auth-key">SSH key</label>
+      </fieldset>
+      <div id="key-fields" class="stack" hidden>
+        <span class="label">Key file</span>
+        <div class="file-pick">
+          <span id="key-name" class="file-name">No key chosen</span>
+          <button type="button" id="choose-key">Choose…</button>
+        </div>
+      </div>
+      <label><span id="secret-label">Password</span>
+        <span class="with-button">
+          <input id="sftp-secret" type="password" autocomplete="off">
+          <button type="button" class="icon reveal" id="reveal" aria-label="Show password" aria-pressed="false" title="Show password"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z"/><circle cx="8" cy="8" r="2"/></svg></button>
+        </span>
+      </label>
+      <label id="remember-row" class="check"><input id="sftp-remember" type="checkbox" checked> Remember on this Mac</label>
+      <div class="row">
+        <button type="submit" class="primary" id="sftp-connect">Connect</button>
+        <button type="button" id="form-cancel">Cancel</button>
+      </div>
+    </form>
+
+    <div id="sftp-browser" class="stack" hidden>
+      <div class="row between">
+        <span id="sftp-who" class="who"></span>
+        <button type="button" id="sftp-disconnect">Disconnect</button>
+      </div>
+      <div id="path-bar" class="path-bar">
+        <nav id="crumbs" class="crumbs" aria-label="Folder"></nav>
+        <button type="button" class="icon" id="path-edit" title="Type a path" aria-label="Type a path"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/></svg></button>
+      </div>
+      <form id="path-form" class="with-button" hidden>
+        <input id="path-input" type="text" spellcheck="false" autocapitalize="off" aria-label="Folder or file path" placeholder="/var/www/data or …/file.json">
+        <button type="submit">Go</button>
+      </form>
+      <div id="sftp-list" class="list"></div>
+      <form id="mkdir-form" class="with-button" hidden>
+        <input id="mkdir-name" type="text" placeholder="New folder name" aria-label="New folder name" spellcheck="false">
+        <button type="submit">Create</button>
+      </form>
+      <button type="button" class="link" id="mkdir-open">+ New folder here</button>
+      <label>File name
+        <span class="suffix"><input id="sftp-file" type="text" spellcheck="false"><span aria-hidden="true">.json</span></span>
+      </label>
+      <button type="button" class="primary wide" id="sftp-upload">Publish here</button>
+    </div>
+
+    <p id="sftp-message" class="message" role="status"></p>
+  </main>
+
+  <footer class="row actions" data-for="data issues outline">
+    <button type="button" id="copy">Copy JSON</button>
+    <button type="button" id="export">Export JSON…</button>
+    <button type="button" class="primary" id="publish-again" hidden>Publish again</button>
+    <button type="button" class="icon" id="refresh" title="Refresh data" aria-label="Refresh data"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.5-3.6"/><path d="M13 2.5v3h-3"/></svg></button>
+    <span id="note" class="muted" role="status"></span>
+  </footer>
+
+  <div id="resize" class="resize" role="separator" aria-orientation="vertical" aria-label="Resize sidebar" tabindex="0" title="Drag to resize"></div>
+
+  <div id="palette" hidden>
+    <input id="palette-input" type="text" placeholder="Insert snippet…" spellcheck="false" aria-label="Search snippets">
+    <div id="palette-results"></div>
+  </div>
+
+  <script src="snippets.js"></script>
+  <script src="sidebar.js"></script>
+  <script src="preview.js"></script>
+  <script src="upload.js"></script>
+</body>
+</html>
