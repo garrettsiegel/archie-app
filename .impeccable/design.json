@@ -1,0 +1,419 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-26T00:00:00Z",
+  "title": "Design System: Archie Editor",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(98.5% 0.001 106)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#40403f",
+          "#5e5e5d",
+          "#80807f",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel",
+        "canonical": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "wash": {
+        "role": "neutral",
+        "displayName": "Wash",
+        "canonical": "oklch(96.3% 0.003 128)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242423",
+          "#3f403f",
+          "#5d5e5c",
+          "#80807f",
+          "#a4a5a3",
+          "#cacbc9",
+          "#eeeeee"
+        ]
+      },
+      "sidebar": {
+        "role": "neutral",
+        "displayName": "Sidebar Stone",
+        "canonical": "oklch(96.4% 0.005 95)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#242422",
+          "#40403d",
+          "#5e5e5a",
+          "#81807d",
+          "#a5a4a2",
+          "#cbcac8",
+          "#efeeed"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(18.4% 0.004 165)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#232424",
+          "#3e403f",
+          "#5c5e5d",
+          "#7e8180",
+          "#a3a5a4",
+          "#c9cbca",
+          "#edefee"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "oklch(36.7% 0.006 165)",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#222523",
+          "#3d413f",
+          "#5b5f5d",
+          "#7d817f",
+          "#a2a5a4",
+          "#c8cbca",
+          "#edefee"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "oklch(50.1% 0.009 165)",
+        "tonalRamp": [
+          "#0a0c0b",
+          "#222523",
+          "#3d413f",
+          "#5a5f5c",
+          "#7c827f",
+          "#a1a6a3",
+          "#c8ccc9",
+          "#ecefee"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "oklch(92.0% 0.005 135)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#232423",
+          "#3f403e",
+          "#5d5e5c",
+          "#7f817e",
+          "#a4a5a3",
+          "#cacbc9",
+          "#eeefed"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Line Strong",
+        "canonical": "oklch(84.2% 0.006 138)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#232423",
+          "#3e403e",
+          "#5c5e5b",
+          "#7e817e",
+          "#a3a5a2",
+          "#c9cbc9",
+          "#eeefed"
+        ]
+      },
+      "green": {
+        "role": "primary",
+        "displayName": "Archie Green",
+        "canonical": "oklch(49.0% 0.084 159)",
+        "tonalRamp": [
+          "#000f06",
+          "#092b1b",
+          "#1d4a33",
+          "#326b4e",
+          "#548f6f",
+          "#81b296",
+          "#b0d5bf",
+          "#dcf6e6"
+        ]
+      },
+      "green-ink": {
+        "role": "primary",
+        "displayName": "Deep Green",
+        "canonical": "oklch(42.3% 0.074 159)",
+        "tonalRamp": [
+          "#010f07",
+          "#0e2a1c",
+          "#234935",
+          "#3a6950",
+          "#5b8d71",
+          "#87b098",
+          "#b3d4c0",
+          "#dff5e7"
+        ]
+      },
+      "green-tint": {
+        "role": "primary",
+        "displayName": "Green Mist",
+        "canonical": "oklch(94.6% 0.013 160)",
+        "tonalRamp": [
+          "#090c0a",
+          "#212523",
+          "#3b413e",
+          "#58605b",
+          "#7a837e",
+          "#9fa7a2",
+          "#c6ccc9",
+          "#ecf0ed"
+        ]
+      },
+      "red": {
+        "role": "error",
+        "displayName": "Issue Red",
+        "canonical": "oklch(50.1% 0.178 29)",
+        "tonalRamp": [
+          "#220000",
+          "#4b0101",
+          "#77130e",
+          "#a62921",
+          "#d14f42",
+          "#ee8072",
+          "#ffb0a3",
+          "#ffddd3"
+        ]
+      },
+      "red-tint": {
+        "role": "error",
+        "displayName": "Red Mist",
+        "canonical": "oklch(95.0% 0.019 26)",
+        "tonalRamp": [
+          "#0e0a09",
+          "#292221",
+          "#473d3c",
+          "#675a59",
+          "#8b7c7b",
+          "#aea1a0",
+          "#d2c8c7",
+          "#f3edec"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only; second line in green."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Feature spotlight headings (install step titles at 1.125rem)."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero pitch, muted."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Spotlight copy, muted."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "Feature list and install step text."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Version line, demo note, window title."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "ArchieML lines, snippet names, paths."
+      }
+    },
+    "shadows": [
+      {
+        "name": "window",
+        "value": "0 0 0 1px rgb(17 19 18 / 0.08), 0 2px 4px rgb(17 19 18 / 0.04), 0 12px 24px rgb(17 19 18 / 0.06), 0 40px 80px -20px rgb(17 19 18 / 0.18)",
+        "purpose": "The drawn app window only."
+      },
+      {
+        "name": "button",
+        "value": "0 1px 2px rgb(17 19 18 / 0.2), inset 0 1px 0 rgb(255 255 255 / 0.15)",
+        "purpose": "Green download button lift and top highlight."
+      },
+      {
+        "name": "doc-page",
+        "value": "0 1px 3px rgb(17 19 18 / 0.12)",
+        "purpose": "Drawn Google Doc page inside the window."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Scroll reveals and inserted-line fade-in."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity 0 to 1, translateY 16px to 0, 600ms, once",
+        "purpose": "Section reveal on scroll; disabled under reduced motion."
+      },
+      {
+        "name": "focus-ring",
+        "value": "2px solid green, 3px offset, 6px radius",
+        "purpose": "Global :focus-visible treatment."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Download Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary action: green pill with download icon. The only filled color button.",
+      "html": "<a class=\"ds-btn-download\" href=\"#\"><svg viewBox=\"0 0 20 20\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M10 3v10M5.5 8.5 10 13l4.5-4.5\"/><path d=\"M4 16.5h12\"/></svg>Download for Mac</a>",
+      "css": ".ds-btn-download { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 9999px; background: var(--color-green, #2f6f4f); color: #fff; font: 600 16px/1.5 -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; text-decoration: none; white-space: nowrap; box-shadow: 0 1px 2px rgb(17 19 18 / 0.2), inset 0 1px 0 rgb(255 255 255 / 0.15); transition: background-color 0.15s; } .ds-btn-download:hover { background: var(--color-green-ink, #245a3f); } .ds-btn-download:focus-visible { outline: 2px solid var(--color-green, #2f6f4f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Download Button (header)",
+      "kind": "button",
+      "refersTo": "button-primary-sm",
+      "description": "Compact header version of the download pill.",
+      "html": "<a class=\"ds-btn-download-sm\" href=\"#\"><svg viewBox=\"0 0 20 20\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M10 3v10M5.5 8.5 10 13l4.5-4.5\"/><path d=\"M4 16.5h12\"/></svg>Download for Mac</a>",
+      "css": ".ds-btn-download-sm { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 9999px; background: var(--color-green, #2f6f4f); color: #fff; font: 600 14px/1.43 -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; text-decoration: none; box-shadow: 0 1px 2px rgb(17 19 18 / 0.2), inset 0 1px 0 rgb(255 255 255 / 0.15); transition: background-color 0.15s; } .ds-btn-download-sm:hover { background: var(--color-green-ink, #245a3f); } .ds-btn-download-sm:focus-visible { outline: 2px solid var(--color-green, #2f6f4f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Small secondary control inside the demo (Undo, Reset).",
+      "html": "<button class=\"ds-btn-quiet\" type=\"button\">Undo</button>",
+      "css": ".ds-btn-quiet { padding: 4px 10px; border: 1px solid var(--color-line, #e3e5e2); border-radius: 6px; background: #fff; color: var(--color-ink-2, #3c403e); font: 500 12px/1.33 -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; cursor: pointer; } .ds-btn-quiet:hover { border-color: var(--color-line-strong, #c9ccc8); } .ds-btn-quiet:focus-visible { outline: 2px solid var(--color-green, #2f6f4f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Segmented Tabs",
+      "kind": "nav",
+      "refersTo": "segmented-tab-active",
+      "description": "Insert / Data / Issues switcher from the app sidebar; red pill count when invalid.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab ds-tab-on\" role=\"tab\" aria-selected=\"true\">Insert</button><button class=\"ds-tab\" role=\"tab\">Data</button><button class=\"ds-tab\" role=\"tab\">Issues <span class=\"ds-count\">2</span></button></div>",
+      "css": ".ds-tabs { display: flex; gap: 2px; padding: 2px; border: 1px solid var(--color-line, #e3e5e2); border-radius: 8px; background: #fff; width: 234px; } .ds-tab { flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px; padding: 4px 8px; border: 0; border-radius: 6px; background: transparent; color: var(--color-muted, #5f6562); font: 500 13px/1.4 -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; cursor: pointer; transition: color 0.15s, background-color 0.15s; } .ds-tab:hover { color: var(--color-ink, #111312); } .ds-tab-on { background: var(--color-green-tint, #e6f0ea); color: var(--color-green-ink, #245a3f); } .ds-tab:focus-visible { outline: 2px solid var(--color-green, #2f6f4f); outline-offset: 3px; } .ds-count { padding: 0 6px; border-radius: 9999px; background: var(--color-red, #b3261e); color: #fff; font-size: 11px; font-weight: 700; }"
+    },
+    {
+      "name": "Header Nav",
+      "kind": "nav",
+      "description": "Sticky translucent header with app name, section links and the small download pill.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\"><span class=\"ds-nav-icon\"></span>Archie Editor</a><nav class=\"ds-nav-links\"><a href=\"#\">Features</a><a href=\"#\">Install</a><a href=\"#\">GitHub</a></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 32px; border-bottom: 1px solid rgb(227 229 226 / 0.7); background: rgb(250 250 249 / 0.8); backdrop-filter: blur(12px); font-family: -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; } .ds-nav-brand { display: flex; align-items: center; gap: 8px; color: var(--color-ink, #111312); font-weight: 600; text-decoration: none; } .ds-nav-icon { width: 28px; height: 28px; border-radius: 7px; background: var(--color-green, #2f6f4f); } .ds-nav-links { display: flex; gap: 20px; font-size: 14px; } .ds-nav-links a { color: var(--color-ink-2, #3c403e); text-decoration: none; } .ds-nav-links a:hover { color: var(--color-ink, #111312); }"
+    },
+    {
+      "name": "Status Indicator",
+      "kind": "chip",
+      "description": "Live doc status in the window title bar: green when valid, red with a count when not.",
+      "html": "<span class=\"ds-status\"><span class=\"ds-dot\"></span>Valid ArchieML</span> <span class=\"ds-status ds-status-bad\"><span class=\"ds-dot\"></span>2 issues</span>",
+      "css": ".ds-status { display: inline-flex; align-items: center; gap: 8px; font: 400 13px/1.4 -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; color: var(--color-green-ink, #245a3f); margin-right: 16px; } .ds-dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--color-green, #2f6f4f); } .ds-status-bad { color: var(--color-red, #b3261e); } .ds-status-bad .ds-dot { background: var(--color-red, #b3261e); }"
+    },
+    {
+      "name": "App Window",
+      "kind": "custom",
+      "refersTo": "app-window",
+      "description": "Signature hero: drawn macOS window with traffic lights, title and status, over a soft layered shadow.",
+      "html": "<div class=\"ds-window\"><div class=\"ds-window-bar\"><span class=\"ds-tl\" style=\"background:#ff5f57\"></span><span class=\"ds-tl\" style=\"background:#febc2e\"></span><span class=\"ds-tl\" style=\"background:#28c840\"></span><span class=\"ds-window-title\">Archie Editor</span></div><div class=\"ds-window-body\"><aside class=\"ds-window-side\"><code>Key: value</code><small>A single key and value</small></aside><div class=\"ds-window-doc\"><div class=\"ds-page\">{venue}<br>name: Harbor Hall<br><span class=\"ds-bad\">city: Portland</span></div></div></div></div>",
+      "css": ".ds-window { width: 520px; overflow: hidden; border-radius: 12px; background: #fff; font-family: -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; box-shadow: 0 0 0 1px rgb(17 19 18 / 0.08), 0 2px 4px rgb(17 19 18 / 0.04), 0 12px 24px rgb(17 19 18 / 0.06), 0 40px 80px -20px rgb(17 19 18 / 0.18); } .ds-window-bar { display: flex; align-items: center; gap: 6px; padding: 10px 16px; border-bottom: 1px solid var(--color-line, #e3e5e2); background: var(--color-wash, #f2f3f1); } .ds-tl { width: 12px; height: 12px; border-radius: 9999px; } .ds-window-title { margin-left: 6px; font-size: 13px; font-weight: 600; color: var(--color-ink-2, #3c403e); } .ds-window-body { display: grid; grid-template-columns: 180px 1fr; height: 180px; } .ds-window-side { padding: 12px; border-right: 1px solid var(--color-line, #e3e5e2); background: #f4f3ef; } .ds-window-side code { display: block; font: 600 13px ui-monospace, \"SF Mono\", Menlo, Consolas, monospace; color: var(--color-green, #2f6f4f); } .ds-window-side small { font-size: 12px; color: var(--color-muted, #5f6562); } .ds-window-doc { padding: 16px; background: #eef0ee; } .ds-page { height: 100%; padding: 16px 24px; border-radius: 4px; background: #fff; font-size: 15px; line-height: 1.75; color: var(--color-ink, #111312); box-shadow: 0 1px 3px rgb(17 19 18 / 0.12); } .ds-bad { text-decoration: underline wavy var(--color-red, #b3261e) 1px; text-underline-offset: 4px; }"
+    },
+    {
+      "name": "UI Fragment",
+      "kind": "card",
+      "refersTo": "ui-fragment",
+      "description": "Feature art: a drawn piece of the real app (here the issues list) instead of an icon card.",
+      "html": "<div class=\"ds-frag\"><div class=\"ds-frag-row\"><code>{venue}</code><span>Line 3: {venue} is never closed with {}</span></div></div>",
+      "css": ".ds-frag { width: 360px; padding: 12px; border: 1px solid var(--color-line, #e3e5e2); border-radius: 12px; background: #f4f3ef; font-family: -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; } .ds-frag-row { padding: 8px 12px; border-radius: 8px; background: #fff; } .ds-frag-row code { display: block; font: 600 13px ui-monospace, \"SF Mono\", Menlo, Consolas, monospace; color: var(--color-ink, #111312); } .ds-frag-row span { font-size: 12.5px; color: var(--color-red, #b3261e); }"
+    },
+    {
+      "name": "Install Step",
+      "kind": "card",
+      "refersTo": "step-number",
+      "description": "Numbered install step on the wash panel: ink circle, title, muted body.",
+      "html": "<div class=\"ds-steps\"><div class=\"ds-step\"><span class=\"ds-step-n\">1</span><h3>Download</h3><p>Get the installer. It runs on Apple Silicon and Intel Macs.</p></div></div>",
+      "css": ".ds-steps { width: 320px; padding: 48px; border-radius: 24px; background: var(--color-wash, #f2f3f1); font-family: -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", Roboto, \"Helvetica Neue\", sans-serif; } .ds-step-n { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9999px; background: var(--color-ink, #111312); color: #fff; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; } .ds-step h3 { margin: 16px 0 0; font-size: 18px; font-weight: 600; color: var(--color-ink, #111312); } .ds-step p { margin: 6px 0 0; font-size: 15px; line-height: 1.625; color: var(--color-muted, #5f6562); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Product on a Clean Desk",
+    "overview": "A conventional, quiet Mac-app download page: near-white ground, true ink text, and the app itself as the hero. The page makes no world of its own; the drawn Archie Editor window carries the identity, and everything around it stays out of its way. Density is low, spacing is generous, and the only color that speaks is the app's own green.\n\nThe owner tried a themed wood/type-case direction and rejected it in favor of the category standard. Texture, costume, and decorative motifs are out; correctness, restraint, and real product UI are in.",
+    "keyCharacteristics": [
+      "Near-white paper ground with cool gray hairlines.",
+      "One accent (app green) for actions and valid states; red only for issues.",
+      "Apple system type throughout; system mono for ArchieML.",
+      "A working, drawn macOS window as the hero; drawn app fragments as feature art.",
+      "Soft layered shadow on the window only; everything else flat."
+    ],
+    "rules": [
+      {
+        "name": "The One Green Rule",
+        "body": "Green is the only accent. It marks things you can do (download, insert) and things that are right (valid). Nothing else is colored.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red Means Wrong Rule",
+        "body": "Red appears only where the doc has a problem. If nothing is broken, no red is on screen.",
+        "section": "colors"
+      },
+      {
+        "name": "The System Voice Rule",
+        "body": "Use the Apple system stack for all text. Headings balance-wrap, body pretty-wraps.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only the Window Floats Rule",
+        "body": "The big layered shadow belongs to the product window. Cards, panels, and sections stay flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** let the drawn product window be the hero and the drawn app fragments be the feature art.",
+      "**Do** keep green for actions and valid states, and red for issues only.",
+      "**Do** use the Apple system stack for text and system mono for ArchieML.",
+      "**Do** keep surfaces flat; save the layered shadow for the window.",
+      "**Do** keep every motion behind a reduced-motion check."
+    ],
+    "donts": [
+      "**Don't** add themed textures or costume worlds (wood, type cases, paper grain); the owner rejected that direction.",
+      "**Don't** replace the drawn product with rows of generic icon feature cards.",
+      "**Don't** introduce a second accent color.",
+      "**Don't** invent testimonials, logos, or download numbers to fill space."
+    ]
+  }
+}

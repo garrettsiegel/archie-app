@@ -126,7 +126,7 @@ The owner tried a themed wood/type-case direction and rejected it in favor of th
 - Near-white paper ground with cool gray hairlines.
 - One accent (app green) for actions and valid states; red only for issues.
 - Apple system type throughout; system mono for ArchieML.
-- A working, drawn macOS window as the hero; drawn app fragments as feature art.
+- A working, drawn macOS window as the hero; real app screenshots as feature art, with drawn dark-theme fragments only where a screenshot needs private material.
 - Soft layered shadow on the window only; everything else flat.
 
 ## Colors
@@ -218,7 +218,11 @@ Rounded, Mac-like corners. Pills (full) for action buttons, status counts, and s
 - Sticky header: app icon (28px) and name on the left; Features, Install, GitHub, and a small download button on the right. Section links hide below 640px; GitHub collapses to its icon.
 
 ### App Window (signature)
-A working drawn copy of Archie Editor: wash title bar with macOS traffic lights (#ff5f57, #febc2e, #28c840), window title, and a live status (green dot + "Valid ArchieML" or red dot + issue count). A 260px sidebar (Insert / Data / Issues) sits beside a drawn Google Doc page on a pale gray canvas. Clicking a snippet appends lines that fade in with a green-mist flash; bad lines get a red wavy underline. Stacks with the doc on top below 768px.
+A working drawn copy of Archie Editor in the app's real dark theme (sidebar/sidebar.css values: #1c1c1a ground, #262624 panels, #7cc09a accent, #e3a83a issue count). macOS traffic lights sit inside the sidebar (hidden-inset title bar), then the app header (icon nav, doc title, green Preview pill), the five tabs (Insert, Data, Issues, Outline, Publish) and the Insert panel; a drawn Google Docs page (no logos) fills the right. Clicking a snippet appends lines with a brief green flash; problem lines get a red wavy underline. The sidebar fills the window below 768px.
+
+### Screenshots
+Feature sections use real captures of the app (website/public/screens, provenance in PROVENANCE.md): cropped to the sidebar and the left of the doc, 1000x640 points at 1x and 2x, WebP. Preview and Publish are drawn in the same dark theme because they need a private page or server to capture.
+
 
 ### Motion
 Sections reveal once on scroll (fade + 16px rise, 0.6s, ease `cubic-bezier(0.16, 1, 0.3, 1)`). All motion and smooth scrolling turn off under reduced motion.

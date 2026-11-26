@@ -20,62 +20,79 @@ const Reveal = ({ children, className = '' }: { children: ReactNode; className?:
   )
 }
 
-// Drawn fragments of the real app's panels; sample data.
-const IssuesFragment = () => (
-  <div className="rounded-xl border border-line bg-[#f4f3ef] p-3" aria-hidden>
-    {[
-      ['{venue}', 'Line 3: {venue} is never closed with {}'],
-      ['name: Harbor Hall', 'Line 9: Duplicate key "name" overwrites line 4'],
-    ].map(([code, msg]) => (
-      <div key={code} className="mb-1 rounded-lg bg-panel px-3 py-2 last:mb-0">
-        <code className="block font-mono text-[13px] font-semibold">{code}</code>
-        <span className="text-[12.5px] text-red">{msg}</span>
-      </div>
-    ))}
-  </div>
+// Real screenshots of the app (see public/screens/PROVENANCE.md).
+const Screenshot = ({ name, alt }: { name: string; alt: string }) => (
+  <img
+    src={`./screens/app-${name}.webp`}
+    srcSet={`./screens/app-${name}.webp 1000w, ./screens/app-${name}@2x.webp 2000w`}
+    sizes="(min-width: 1024px) 660px, 100vw"
+    width={1000}
+    height={640}
+    loading="lazy"
+    decoding="async"
+    alt={alt}
+    className="h-auto w-full drop-shadow-[0_24px_40px_rgb(17_19_18/0.18)]"
+  />
 )
 
+// Drawn in the app's own dark-theme colors: these features need a private page or server to screenshot.
+const dark = { bg: '#1c1c1a', panel: '#262624', text: '#ecebe6', muted: '#a3a198', line: '#3a3936', field: '#77756d', accent: '#7cc09a' }
+
 const PreviewFragment = () => (
-  <div className="grid grid-cols-2 overflow-hidden rounded-xl border border-line" aria-hidden>
-    <div className="bg-white p-4 font-mono text-[12px] leading-relaxed text-ink-2">
-      {'{venue}'}<br />name: Harbor Hall<br /><span className="rounded bg-green-tint px-0.5 text-green-ink">city: Seattle</span><br />{'{}'}
+  <div className="grid grid-cols-[0.9fr_1.1fr] overflow-hidden rounded-xl text-[12.5px] shadow-[0_24px_40px_rgb(17_19_18/0.18)]" aria-hidden>
+    <div className="bg-white p-5 font-[Arial,sans-serif] leading-[1.7] text-[#1f1f1f]">
+      {'{venue}'}<br />name: Harbor Hall<br /><span className="rounded bg-[#c2e7ff] px-0.5">city: Seattle</span><br />{'{}'}
     </div>
-    <div className="flex flex-col border-l border-line bg-ink p-4 text-white">
-      <span className="mb-auto flex items-center gap-1.5 text-[11px] text-white/70"><span className="size-1.5 rounded-full bg-[#28c840]" />Live preview</span>
-      <span className="mt-6 text-xl font-semibold tracking-tight">Harbor Hall</span>
-      <span className="text-[13px] text-white/75">Seattle</span>
+    <div className="flex flex-col" style={{ background: dark.bg, color: dark.text }}>
+      <div className="flex h-10 items-center gap-2 border-b px-3.5" style={{ borderColor: dark.line }}>
+        <span className="font-bold">Live preview</span>
+        <span className="truncate font-mono text-[11.5px]" style={{ color: dark.muted }}>qa.example.com/your-project</span>
+      </div>
+      <div className="flex flex-1 flex-col justify-end bg-gradient-to-b from-[#2b3a33] to-[#111312] p-5 text-white">
+        <span className="text-2xl font-bold tracking-tight">Harbor Hall</span>
+        <span className="text-[13px] text-white/75">Seattle</span>
+      </div>
     </div>
   </div>
 )
 
 const PublishFragment = () => (
-  <div className="rounded-xl border border-line bg-[#f4f3ef] p-3 text-[13px]" aria-hidden>
-    <div className="mb-2 flex items-center justify-between rounded-lg bg-panel px-3 py-2">
+  <div className="rounded-xl p-4 text-[13px] shadow-[0_24px_40px_rgb(17_19_18/0.18)]" style={{ background: dark.bg, color: dark.text }} aria-hidden>
+    <div className="mb-2.5 flex items-center justify-between">
       <span className="font-semibold">editor@data.example.com</span>
-      <span className="text-muted">Connected</span>
+      <span className="rounded-md border px-2.5 py-1" style={{ borderColor: dark.line, background: dark.panel }}>Disconnect</span>
     </div>
-    <div className="mb-2 rounded-lg bg-panel px-3 py-2 font-mono text-[12px] text-green">/ var / www / data</div>
-    <div className="flex items-center rounded-lg border border-line-strong bg-panel">
-      <span className="flex-1 px-3 py-2">summer-lineup</span>
-      <span className="pr-3 font-mono text-[12px] text-muted">.json</span>
+    <div className="mb-2.5 flex gap-1 rounded-md px-2 py-1.5 font-mono text-[12px]" style={{ background: dark.panel }}>
+      <span style={{ color: dark.accent }}>/</span><span style={{ color: dark.accent }}>var</span><span style={{ color: dark.muted }}>/</span><span style={{ color: dark.accent }}>www</span><span style={{ color: dark.muted }}>/</span><span className="font-semibold">data</span>
     </div>
-    <div className="mt-2 rounded-full bg-green py-2 text-center font-semibold text-white">Publish here</div>
+    <div className="mb-2.5 overflow-hidden rounded-md border font-mono text-[12.5px]" style={{ borderColor: dark.line }}>
+      {['lineups', 'summer-lineup.json'].map((n, i) => (
+        <div key={n} className="border-b px-2 py-1.5 last:border-b-0" style={{ borderColor: dark.line, color: i ? dark.text : dark.accent }}>{n}</div>
+      ))}
+    </div>
+    <div className="mb-1 font-semibold">File name</div>
+    <div className="mb-2.5 flex items-center rounded-md border" style={{ borderColor: dark.field, background: dark.panel }}>
+      <span className="flex-1 px-2 py-1.5">summer-lineup</span><span className="pr-2 font-mono text-[12px]" style={{ color: dark.muted }}>.json</span>
+    </div>
+    <div className="rounded-md py-2 text-center font-semibold" style={{ background: dark.accent, color: dark.bg }}>Publish here</div>
   </div>
 )
 
 const SPOTLIGHTS = [
-  { title: 'Catch mistakes before they ship', body: 'Unclosed blocks, stray closers, duplicate keys and :skip or :end mix-ups are listed in plain words. Click one to jump to that line in the doc.', art: <IssuesFragment /> },
+  { title: 'Your real Google Doc, with tools beside it', body: 'Sign in with your own Google account and open any doc. ArchieML blocks go in with one click, ending on their own line, or wrapped around text you highlight.', art: <Screenshot name="insert" alt="Archie Editor showing a Google Doc of sample ArchieML next to the Insert tab's list of snippets" /> },
+  { title: 'Your data, as you type', body: 'The Data tab turns the doc into JSON as you edit. Copy it, or export a .json file.', art: <Screenshot name="data" alt="Archie Editor's Data tab showing the sample doc as JSON" /> },
+  { title: 'Catch mistakes before they ship', body: 'Unclosed blocks, stray closers, duplicate keys and :skip or :end mix-ups are listed in plain words. Click one to jump to that line in the doc.', art: <Screenshot name="issues" alt="Archie Editor's Issues tab listing an unclosed block and a duplicate key in the sample doc" /> },
   { title: 'See the real page while you write', body: 'Paste your project’s test-page link once. The page opens beside your doc and reads your unpublished edits, so its own checks run on what you just wrote. Works with private docs.', art: <PreviewFragment /> },
   { title: 'Publish the JSON yourself', body: 'Send the data to your server over SFTP with a password or SSH key. Pick a folder, name the file, and next time it’s one click: Publish again.', art: <PublishFragment /> },
 ]
 
 const MORE = [
-  ['Stay in Google Docs', 'Sign in with your own account; the doc opens right in the app.'],
-  ['Data as you type', 'Watch the doc turn into JSON. Copy it or export a file.'],
   ['Quick insert', 'Press ⌘⇧K, type a few letters, press Enter.'],
   ['Wrap a selection', 'Highlight text, pick a block, and it wraps around it.'],
   ['Your own snippets', 'Save the blocks you write every day.'],
   ['Outline', 'Every object and list in the doc, one click away.'],
+  ['Light and dark', 'Follows your Mac’s appearance.'],
+  ['Make room', 'Drag the sidebar and preview to any width.'],
 ]
 
 const STEPS: { title: string; body: ReactNode }[] = [
@@ -111,11 +128,11 @@ export const App = () => (
     <main id="main">
       <section aria-labelledby="hero-title" className={`${wrap} pt-12 text-center sm:pt-16`}>
                 <h1 id="hero-title" className="mx-auto m-0 max-w-4xl text-[clamp(2.3rem,5.2vw,3.9rem)] leading-[1.05] font-bold tracking-[-0.035em]">
-          Write ArchieML in Google Docs.<br />
+          The Mac app for writing ArchieML in Google Docs.{' '}
           <span className="text-green">Catch mistakes before they ship.</span>
         </h1>
         <p className="mx-auto mt-5 mb-7 max-w-xl text-lg leading-relaxed text-muted">
-          A free Mac app that puts your Google Doc beside the tools you need: insert blocks, see your data as JSON, preview the real page, and publish.
+          Archie Editor is a free, standalone app for macOS, not a browser extension or Docs add-on. Your Google Doc opens inside it, beside the tools you need: insert blocks, see your data as JSON, preview the real page, and publish.
         </p>
         <div className="flex flex-col items-center gap-2.5">
           <DownloadButton />
@@ -124,7 +141,7 @@ export const App = () => (
 
         <Reveal className="mt-10 sm:mt-12">
           <AppDemo />
-          <p className="mt-4 text-[13px] text-muted">A working demo with sample data. Click a snippet; the status turns green once the doc is valid.</p>
+          <p className="mt-4 text-[13px] text-muted">A working demo with sample data. Click a snippet, then check the Data and Issues tabs.</p>
         </Reveal>
       </section>
 
@@ -134,7 +151,7 @@ export const App = () => (
         </h2>
         <div className="mt-14 flex flex-col gap-20 sm:gap-24">
           {SPOTLIGHTS.map((s, i) => (
-            <Reveal key={s.title} className="grid items-center gap-8 md:grid-cols-2 md:gap-16">
+            <Reveal key={s.title} className={`grid items-center gap-8 md:gap-14 ${i % 2 ? 'md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]' : 'md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]'}`}>
               <div className={i % 2 ? 'md:order-2' : ''}>
                 <h3 className="m-0 text-2xl font-semibold tracking-[-0.02em]">{s.title}</h3>
                 <p className="mt-3 mb-0 max-w-md text-[17px] leading-relaxed text-muted">{s.body}</p>
