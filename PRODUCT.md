@@ -31,6 +31,8 @@ Writers work in Google Docs; ArchieML turns doc text into JSON for web pages. Pa
 Confirmed features:
 - Sign in with Google inside the app; open any doc, recent docs list.
 - Insert ArchieML snippets (values, objects, arrays, freeform, commands) at the cursor; each ends with a new line; wrap highlighted text; filter snippets; quick insert (⌘⇧K); save your own snippets; block name fills in names.
+- Templates: a guided builder (name, shape, label, fields with help text) and a fill-in form that writes the ArchieML; fill from highlighted text; export/import to share; in quick insert.
+- Colors in the doc: keys and {}/[] lines get their own text color and highlight color (each on or off), optional bold; applied on insert or to highlighted text. Plain text is unchanged.
 - Data tab: the doc as JSON, live; Copy JSON; Export .json.
 - Issues tab: unclosed blocks, stray closers, duplicate keys, :skip/:end mistakes, keys with spaces; click to jump to the line.
 - Outline tab: every object and array, click to jump.

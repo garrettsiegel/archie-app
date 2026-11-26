@@ -30,6 +30,18 @@ const GROUPS: { group: string; items: Snippet[] }[] = [
   ] },
 ]
 
+// The app colors keys and {}/[] lines in the doc (Colors in the doc, default
+// settings). Same patterns as sidebar/format.js; the text itself is unchanged.
+const KEY_RE = /^(\s*)([A-Za-z0-9\-_.]+[ \t]*:)(.*)$/
+const SCOPE_RE = /^(\s*)([[{][ \t]*[+.]*[ \t]*[A-Za-z0-9\-_.]*[ \t]*[\]}])(.*)$/
+const DocLine = ({ line, on }: { line: string; on: boolean }) => {
+  if (!on) return <>{line}</>
+  const block = SCOPE_RE.exec(line)
+  const m = block ?? KEY_RE.exec(line)
+  if (!m) return <>{line}</>
+  return <>{m[1]}<span style={{ color: block ? '#d62e0b' : '#1a73e8' }}>{m[2]}</span>{m[3]}</>
+}
+
 const Svg = ({ d, size = 14 }: { d: ReactNode; size?: number }) => (
   <svg viewBox="0 0 16 16" width={size} height={size} fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>{d}</svg>
 )
@@ -57,6 +69,8 @@ const SectionLabel = ({ children }: { children: ReactNode }) => (
 export const AppDemo = () => {
   const [lines, setLines] = useState(START)
   const [tab, setTab] = useState<Tab>('insert')
+  const [colorsOn, setColorsOn] = useState(true)
+  const [form, setForm] = useState<{ name: string; night: string } | null>(null)
   const reduce = useReducedMotion()
   const text = lines.join('\n')
   const issues = useMemo(() => lint(text), [text])
@@ -112,6 +126,39 @@ export const AppDemo = () => {
               <div className="mx-1 my-1.5 text-[11px] tracking-[0.06em] uppercase" style={{ color: C.muted }}>▸ Open a doc</div>
               <div className="mt-2 flex items-center gap-1.5 rounded-md border px-2 py-1.5" style={{ borderColor: C.field, background: C.panel, color: C.muted }}>
                 <Svg size={14} d={<g><circle cx="7" cy="7" r="4.5" /><path d="m10.5 10.5 3 3" /></g>} />Filter snippets
+              </div>
+              <div data-part="colors" className="mt-2.5 px-1">
+                <SectionLabel>Colors in the doc <span style={{ color: '#d62e0b' }}>{'{ }'}</span> <span style={{ color: '#1a73e8' }}>key:</span></SectionLabel>
+                <label className="flex cursor-pointer items-center gap-1.5 px-1">
+                  <input type="checkbox" checked={colorsOn} onChange={(e) => setColorsOn(e.target.checked)} className="m-0" style={{ accentColor: C.accent }} />
+                  Color keys and {'{}/[]'} lines
+                </label>
+              </div>
+              <div data-part="templates">
+                <SectionLabel>My templates</SectionLabel>
+                {form ? (
+                  <form className="mx-1 grid gap-2 rounded-[7px] border p-2.5" style={{ borderColor: C.line, background: C.panel }}
+                    onSubmit={(e) => { e.preventDefault(); setLines((l) => [...l, '[acts]', `name: ${form.name.trim() || 'The Lanterns'}`, `night: ${form.night.trim() || 'Friday'}`, '[]']); setForm(null) }}>
+                    <div className="font-semibold">Acts <span className="font-normal" style={{ color: C.muted }}>· fill in, no brackets</span></div>
+                    {(['name', 'night'] as const).map((k) => (
+                      <label key={k} className="grid gap-1 font-mono text-[12px] font-semibold">{k}
+                        <input value={form[k]} onChange={(e) => setForm({ ...form, [k]: e.target.value })} placeholder={k === 'name' ? 'The Lanterns' : 'Friday'}
+                          className="rounded-md border px-2 py-1 font-sans font-normal" style={{ borderColor: C.field, background: C.bg, color: C.text }} />
+                      </label>
+                    ))}
+                    <div className="flex gap-1.5">
+                      <button type="submit" className="cursor-pointer rounded-full border-0 px-3 py-1 font-semibold" style={{ background: C.accent, color: C.bg }}>Insert into doc</button>
+                      <button type="button" onClick={() => setForm(null)} className="cursor-pointer rounded-md border px-2.5 py-1" style={{ borderColor: C.line, background: 'transparent', color: C.text }}>Cancel</button>
+                    </div>
+                  </form>
+                ) : (
+                  <button type="button" onClick={() => setForm({ name: '', night: '' })}
+                    className="mb-1 block w-full cursor-pointer rounded-[7px] border border-transparent px-[9px] py-[7px] text-left transition-colors hover:border-[#3a3936] hover:bg-[#262624]">
+                    <code className="block font-mono text-[12.5px] font-semibold" style={{ color: C.accent }}>Acts</code>
+                    <span className="block text-[12px]" style={{ color: C.muted }}>List of items · [acts]</span>
+                  </button>
+                )}
+                <div className="px-1 py-1" style={{ color: C.accent }}>+ New template</div>
               </div>
               <SectionLabel>My snippets</SectionLabel>
               <div className="px-1 py-1" style={{ color: C.accent }}>+ New snippet</div>
@@ -184,7 +231,7 @@ export const AppDemo = () => {
               return (
                 <motion.div key={`${i}-${line}`} initial={reduce || i < START.length ? false : { backgroundColor: 'rgba(124,192,154,0.35)' }} animate={{ backgroundColor: 'rgba(124,192,154,0)' }} transition={{ duration: 1.2 }}
                   className={`min-h-[1.6em] text-[14.5px] leading-[1.6] ${bad ? 'underline decoration-[#d93025] decoration-wavy decoration-1 underline-offset-4' : ''}`}>
-                  {line}
+                  <DocLine line={line} on={colorsOn} />
                 </motion.div>
               )
             })}

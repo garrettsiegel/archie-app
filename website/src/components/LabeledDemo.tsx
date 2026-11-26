@@ -6,7 +6,7 @@ import { AppDemo } from './AppDemo'
 
 // The working demo, labeled on hover: point at a part of the app (or a feature in
 // the list below) and it gets an orange outline with a short label beside it.
-const PARTS = ['snippets', 'data', 'issues', 'preview', 'publish'] as const
+const PARTS = ['snippets', 'templates', 'colors', 'data', 'issues', 'preview', 'publish'] as const
 type Part = (typeof PARTS)[number]
 type Box = { left: number; top: number; width: number; height: number }
 

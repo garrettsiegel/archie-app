@@ -17,6 +17,7 @@ const custom = (s) => ({
 });
 
 async function insert(item) {
+  if (item.activate) return item.activate(); // templates open their form
   const name = nameInput.value.trim();
   const selection = item.wrap ? await window.archie.selection() : '';
   await window.archie.insert(selection ? item.wrap(name, selection) : item.text(name));
@@ -64,6 +65,7 @@ $('filter').addEventListener('keydown', (e) => {
 
 function render(store) {
   saved = store;
+  window.renderTemplates?.(store);
   $('mine').replaceChildren(...saved.snippets.map((s) => {
     const remove = el('button', { type: 'button', className: 'remove', title: `Delete ${s.label}` });
     remove.setAttribute('aria-label', `Delete ${s.label}`);
@@ -118,7 +120,7 @@ let active = 0;
 
 function drawPalette() {
   const query = $('palette-input').value.trim().toLowerCase();
-  const all = [...saved.snippets.map(custom), ...window.SNIPPETS.flatMap((g) => g.items)];
+  const all = [...(window.templateItems?.() || []), ...saved.snippets.map(custom), ...window.SNIPPETS.flatMap((g) => g.items)];
   matches = all.filter((i) => `${i.label} ${i.hint}`.toLowerCase().includes(query));
   active = Math.max(0, Math.min(active, matches.length - 1));
   $('palette-results').replaceChildren(...matches.map((item, index) => {

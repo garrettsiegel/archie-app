@@ -50,6 +50,56 @@
     </label>
     <p id="no-match" class="muted empty" hidden>No snippets match.</p>
 
+    <details id="colors-section" class="colors">
+      <summary>Colors in the doc <span id="colors-sample" class="colors-sample" aria-hidden="true"></span></summary>
+      <div class="stack">
+        <label class="check"><input id="colors-on" type="checkbox"> Color keys and {}/[] lines when inserting</label>
+        <div class="color-group">
+          <span class="color-name">Keys</span>
+          <div class="color-row">
+            <label class="check"><input id="key-text-on" type="checkbox"> Text</label>
+            <button type="button" id="key-text" class="swatch-btn" aria-label="Keys text color" aria-haspopup="dialog"></button>
+            <label class="check"><input id="key-hl-on" type="checkbox"> Highlight</label>
+            <button type="button" id="key-hl" class="swatch-btn" aria-label="Keys highlight color" aria-haspopup="dialog"></button>
+          </div>
+        </div>
+        <div class="color-group">
+          <span class="color-name">Objects and arrays</span>
+          <div class="color-row">
+            <label class="check"><input id="block-text-on" type="checkbox"> Text</label>
+            <button type="button" id="block-text" class="swatch-btn" aria-label="Objects and arrays text color" aria-haspopup="dialog"></button>
+            <label class="check"><input id="block-hl-on" type="checkbox"> Highlight</label>
+            <button type="button" id="block-hl" class="swatch-btn" aria-label="Objects and arrays highlight color" aria-haspopup="dialog"></button>
+          </div>
+        </div>
+        <label class="check"><input id="colors-bold" type="checkbox"> Bold them</label>
+        <div id="color-pop" class="color-pop" role="dialog" aria-label="Pick a color" hidden>
+          <div id="color-grid" class="color-grid"></div>
+          <form id="color-hex-form" class="color-hex">
+            <span aria-hidden="true">#</span><input id="color-hex" type="text" maxlength="7" placeholder="d62e0b" spellcheck="false" autocomplete="off" aria-label="Hex color">
+            <button type="submit">Use</button>
+          </form>
+          <p id="color-hex-msg" class="tpl-msg" role="alert"></p>
+        </div>
+        <pre id="colors-preview" class="tpl-preview colors-preview" aria-label="Preview"></pre>
+        <div class="row"><button type="button" id="color-selection">Color highlighted text</button></div>
+        <div class="hint">Already have ArchieML in the doc? Highlight it, then click to color it. Colors never change the data.</div>
+      </div>
+    </details>
+
+    <section id="tpl-section">
+      <h2>My templates</h2>
+      <p id="tpl-empty" class="hint" hidden>A template is a form for a block you add often, like a list of speakers. Build it once, then fill it in. No brackets to type.</p>
+      <div id="tpl-list"></div>
+      <div class="tpl-share">
+        <button type="button" class="link" id="tpl-new">+ New template</button>
+        <span class="tpl-share-links">
+          <button type="button" class="link" id="tpl-import" title="Add templates and styles from a file someone shared">Import</button>
+          <button type="button" class="link" id="tpl-export" title="Save your templates and styles to a file to share">Export</button>
+        </span>
+      </div>
+    </section>
+
     <section id="mine-section">
       <h2>My snippets</h2>
       <div id="mine"></div>
@@ -163,13 +213,71 @@
 
   <div id="resize" class="resize" role="separator" aria-orientation="vertical" aria-label="Resize sidebar" tabindex="0" title="Drag to resize"></div>
 
+  <!-- Template builder and fill-in form: full-height views over the sidebar -->
+  <div id="tpl-view" hidden>
+    <form id="tpl-builder" class="tpl" hidden novalidate>
+      <div class="tpl-head">
+        <button type="button" class="link tpl-back">← Back</button>
+        <h2 id="tpl-builder-title" class="tpl-title">New template</h2>
+      </div>
+      <p class="hint tpl-intro">Build it once, then fill in a form whenever you need it. No brackets to type.</p>
+
+      <label class="tpl-label" for="tpl-name"><span class="tpl-step">1</span>Name</label>
+      <input id="tpl-name" type="text" placeholder="e.g. Speaker" spellcheck="false" autocomplete="off">
+
+      <fieldset class="tpl-kinds">
+        <legend class="tpl-label"><span class="tpl-step">2</span>Shape</legend>
+        <div id="tpl-kinds"></div>
+      </fieldset>
+
+      <label class="tpl-label" for="tpl-key"><span class="tpl-step">3</span>Label in the doc</label>
+      <input id="tpl-key" type="text" placeholder="e.g. speakers" spellcheck="false" autocomplete="off" aria-describedby="tpl-key-hint">
+      <div id="tpl-key-hint" class="hint"></div>
+
+      <div id="tpl-fields-wrap">
+        <div class="tpl-label"><span class="tpl-step">4</span>Fields</div>
+        <ol id="tpl-fields" class="tpl-fields"></ol>
+        <button type="button" class="link" id="tpl-add-field">+ Add field</button>
+      </div>
+
+      <div class="tpl-label">Preview</div>
+      <pre id="tpl-preview" class="tpl-preview"></pre>
+      <p id="tpl-builder-msg" class="tpl-msg" role="alert"></p>
+      <div class="row tpl-actions">
+        <button type="submit" class="primary">Save template</button>
+        <button type="button" id="tpl-from-selection" title="Highlight an existing block in the doc first">Fill from highlighted text</button>
+      </div>
+    </form>
+
+    <form id="tpl-fill" class="tpl" hidden novalidate>
+      <div class="tpl-head">
+        <button type="button" class="link tpl-back">← Back</button>
+        <h2 id="tpl-fill-title" class="tpl-title"></h2>
+      </div>
+      <p id="tpl-fill-kind" class="hint tpl-intro"></p>
+      <div id="tpl-fill-fields"></div>
+      <label id="tpl-items-only-row" class="check tpl-check"><input id="tpl-items-only" type="checkbox"> <span id="tpl-items-only-label"></span></label>
+      <div class="tpl-label">Will insert</div>
+      <pre id="tpl-fill-preview" class="tpl-preview"></pre>
+      <p id="tpl-fill-msg" class="tpl-msg" role="alert"></p>
+      <div class="row tpl-actions">
+        <button type="submit" class="primary">Insert into doc</button>
+        <button type="button" id="tpl-edit">Edit template</button>
+      </div>
+    </form>
+  </div>
+
   <div id="palette" hidden>
     <input id="palette-input" type="text" placeholder="Insert snippet…" spellcheck="false" aria-label="Search snippets">
     <div id="palette-results"></div>
   </div>
 
   <script src="snippets.js"></script>
+  <script src="templates-core.js"></script>
+  <script src="format.js"></script>
   <script src="sidebar.js"></script>
+  <script src="templates.js"></script>
+  <script src="colors.js"></script>
   <script src="preview.js"></script>
   <script src="upload.js"></script>
 </body>

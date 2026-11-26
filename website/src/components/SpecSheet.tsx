@@ -55,7 +55,7 @@ export const SpecSheet = () => (
           <div role="img" aria-label={item.label} className="flex justify-start">{item.mark}</div>
           <div>
             <dt className="t-title">{item.title}</dt>
-            <dd className="t-body m-0 mt-1 text-ink-2">{item.body}</dd>
+            <dd className="t-body m-0 mt-1 text-pretty text-ink-2">{item.body}</dd>
           </div>
         </div>
       ))}

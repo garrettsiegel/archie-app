@@ -1,9 +1,10 @@
-const { app, BaseWindow, WebContentsView, Menu, ipcMain, clipboard, dialog, session, shell } = require('electron');
+const { app, BaseWindow, WebContentsView, Menu, ipcMain, clipboard, ClipboardItem, dialog, session, shell } = require('electron');
 const fs = require('fs');
 const path = require('path');
 const archieml = require('archieml');
 const { lint } = require('./lib/lint');
 const { createSftp } = require('./lib/sftp');
+const format = require('./sidebar/format');
 
 app.setName('Archie Editor');
 // Keep using the original data folder so the saved Google login survives the rename.
@@ -53,6 +54,9 @@ function loadStore() {
     store = {};
   }
   store.snippets ||= [];
+  store.templates ||= []; // structured templates made in the builder
+  delete store.styles; // an earlier test build's tag styles, replaced by docColors
+  store.docColors = format.clean(store.docColors); // colors for keys and {}/[] lines
   store.recents ||= [];
   store.uploadNames ||= {};
   store.destinations ||= {}; // doc id -> { serverId, folder, fileName }
@@ -338,11 +342,31 @@ function buildMenu() {
   ]));
 }
 
+// Docs adds its own history entries for the same doc (tabs, headings, the
+// redirect to ?tab=t.0), so a plain goBack often lands on the same page and
+// looks like it did nothing. Back skips to the last entry that's a different page.
+const pageOf = (url) => {
+  try {
+    const u = new URL(url);
+    const doc = /\/document\/(?:u\/\d+\/)?d\/([^/]+)/.exec(u.pathname);
+    return doc ? `doc:${doc[1]}` : `${u.origin}${u.pathname.replace(/\/$/, '')}`;
+  } catch { return url; }
+};
+function backIndex() {
+  const h = docs.webContents.navigationHistory;
+  const entries = h.getAllEntries();
+  const here = pageOf(docs.webContents.getURL());
+  for (let i = h.getActiveIndex() - 1; i >= 0; i--) {
+    if (pageOf(entries[i].url) !== here) return i;
+  }
+  return -1;
+}
+
 function sendNavState() {
   send(sidebar, 'nav-state', {
     url: docs.webContents.getURL(),
     title: docs.webContents.getTitle(),
-    canGoBack: docs.webContents.navigationHistory.canGoBack(),
+    canGoBack: backIndex() >= 0,
   });
 }
 
@@ -454,9 +478,34 @@ ipcMain.handle('insert', (_e, snippet) => serial(() => withClipboard(async () =>
   // Every snippet ends with a newline so the next one starts on its own line.
   const text = snippet.endsWith('\n') ? snippet : `${snippet}\n`;
   docs.webContents.focus();
-  await clipboard.writeText(text);
+  await writeClip(text);
   docs.webContents.paste();
   await sleep(200); // let Docs read the clipboard before it's restored
+})));
+
+// Put text on the clipboard; with doc colors on, an HTML copy too, so Docs
+// pastes keys and {}/[] lines colored. Plain text stays as the fallback.
+// This Electron's clipboard takes ClipboardItems, like the web's clipboard API.
+const writeHtml = (text, html) => clipboard.write([new ClipboardItem({ 'text/plain': text, 'text/html': html })]);
+async function writeClip(text) {
+  if (store.docColors.on) await writeHtml(text, format.toHtml(text, store.docColors));
+  else await clipboard.writeText(text);
+}
+
+// Re-paste the highlighted text with colors, for ArchieML already in the doc.
+ipcMain.handle('color-selection', () => serial(() => withClipboard(async () => {
+  if (!currentDoc()) return false;
+  const marker = `archie-no-selection-${Date.now()}`;
+  docs.webContents.focus();
+  await clipboard.writeText(marker);
+  docs.webContents.copy();
+  await sleep(150);
+  const text = await clipboard.readText();
+  if (text === marker || !text.trim()) return false;
+  await writeHtml(text, format.toHtml(text, { ...store.docColors, on: true }));
+  docs.webContents.paste();
+  await sleep(200);
+  return true;
 })));
 
 // The text highlighted in the doc, or '' when nothing is.
@@ -631,6 +680,59 @@ ipcMain.handle('add-snippet', (_e, { label, text }) => {
   saveStore();
   return store;
 });
+// Templates: kept only in a known shape, so a bad save can't break the sidebar.
+const cleanTemplate = (t) => ({
+  id: String(t.id || Date.now().toString(36)),
+  name: String(t.name || '').slice(0, 80),
+  kind: ['object', 'items', 'list'].includes(t.kind) ? t.kind : 'object',
+  key: String(t.key || '').slice(0, 80),
+  fields: (Array.isArray(t.fields) ? t.fields : []).slice(0, 50).map((f) => ({
+    key: String(f.key || '').slice(0, 80), long: Boolean(f.long), required: Boolean(f.required),
+    hint: String(f.hint || '').slice(0, 160),
+  })),
+});
+const upsert = (list, item) => {
+  const i = list.findIndex((x) => x.id === item.id);
+  if (i >= 0) list[i] = item; else list.push(item);
+};
+ipcMain.handle('save-colors', (_e, c) => { store.docColors = format.clean(c); saveStore(); return store; });
+
+// Share templates as a file, so a developer can set them up once for editors.
+ipcMain.handle('export-templates', async () => {
+  const { canceled, filePath } = await dialog.showSaveDialog(win, {
+    defaultPath: 'archie-templates.json',
+    filters: [{ name: 'Archie templates', extensions: ['json'] }],
+  });
+  if (canceled) return null;
+  const file = { app: 'Archie Editor', version: 1, templates: store.templates };
+  await fs.promises.writeFile(filePath, `${JSON.stringify(file, null, 2)}\n`);
+  return { templates: store.templates.length };
+});
+ipcMain.handle('import-templates', async () => {
+  const { canceled, filePaths } = await dialog.showOpenDialog(win, {
+    properties: ['openFile'],
+    filters: [{ name: 'Archie templates', extensions: ['json'] }],
+  });
+  if (canceled || !filePaths[0]) return null;
+  let file;
+  try { file = JSON.parse(await fs.promises.readFile(filePaths[0], 'utf8')); } catch { return { error: 'That file isn’t a templates file.' }; }
+  const templates = Array.isArray(file?.templates) ? file.templates.slice(0, 200) : [];
+  if (!templates.length) return { error: 'That file has no templates in it.' };
+  // Same id means a newer copy of the same template, so it replaces the old one.
+  templates.forEach((t) => upsert(store.templates, cleanTemplate(t)));
+  saveStore();
+  return { store, templates: templates.length };
+});
+ipcMain.handle('save-template', (_e, t) => {
+  upsert(store.templates, cleanTemplate(t));
+  saveStore();
+  return store;
+});
+ipcMain.handle('remove-template', (_e, id) => {
+  store.templates = store.templates.filter((t) => t.id !== id);
+  saveStore();
+  return store;
+});
 ipcMain.handle('remove-snippet', (_e, id) => {
   store.snippets = store.snippets.filter((s) => s.id !== id);
   saveStore();
@@ -639,7 +741,10 @@ ipcMain.handle('remove-snippet', (_e, id) => {
 
 ipcMain.handle('nav', (_e, action) => {
   const wc = docs.webContents;
-  if (action === 'back' && wc.navigationHistory.canGoBack()) wc.navigationHistory.goBack();
+  if (action === 'back') {
+    const i = backIndex();
+    if (i >= 0) wc.navigationHistory.goToIndex(i);
+  }
   if (action === 'reload') wc.reload();
   if (action === 'home') wc.loadURL(DOCS_HOME);
   if (action === 'external') shell.openExternal(wc.getURL());
