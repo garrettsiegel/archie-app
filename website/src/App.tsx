@@ -39,7 +39,6 @@ export const App = () => (
         <span className="t-label hidden lg:col-span-4 lg:block lg:text-center">ArchieML · Google Docs · macOS</span>
         <nav aria-label="Main" className="col-span-6 flex items-center justify-end gap-5 text-sm font-bold sm:col-span-8 lg:col-span-4">
           <a href="#features" className="hidden text-ink no-underline hover:text-signal lg:inline">Features</a>
-          <a href="#install" className="hidden text-ink no-underline hover:text-signal lg:inline">Install</a>
           <a href={REPO_URL} className="flex items-center gap-1.5 text-ink no-underline hover:text-signal"><GitHubIcon className="size-4" /><span className="hidden sm:inline">GitHub</span></a>
           <InstallButton size="sm" />
         </nav>
