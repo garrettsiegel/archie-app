@@ -1,6 +1,6 @@
 ---
 name: Archie Editor
-description: Download site for a free Mac app that writes and checks ArchieML in Google Docs.
+description: Download site for a Mac app that writes and checks ArchieML in Google Docs.
 colors:
   signal: "#d62e0b"
   paper: "#ffffff"

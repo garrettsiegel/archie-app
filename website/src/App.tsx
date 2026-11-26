@@ -55,12 +55,12 @@ export const App = () => (
         <div className="col-span-12 mt-8 grid grid-cols-12 gap-x-4 gap-y-5 border-t border-ink pt-6">
           <p className="t-lead col-span-12 m-0 text-signal md:col-span-4">Catch mistakes before they ship.</p>
           <p className="t-body col-span-12 m-0 md:col-span-5">
-            A free, standalone app for macOS, not a browser extension or Docs add-on. Your Google Doc opens inside it, beside the tools you need.
+            A standalone app for macOS, not a browser extension or Docs add-on. Your Google Doc opens inside it, beside the tools you need.
           </p>
           <div className="col-span-12 flex flex-col items-start gap-2 md:col-span-3 md:items-end">
             <DownloadButton />
             <p className="t-meta m-0 text-muted md:text-right">
-              <span className="block">Version {VERSION} · {DOWNLOAD_SIZE} · Free</span>
+              <span className="block">Version {VERSION} · {DOWNLOAD_SIZE}</span>
               <span className="block">Apple Silicon and Intel</span>
             </p>
           </div>
@@ -99,7 +99,7 @@ export const App = () => (
     </main>
 
     <footer className={`${grid} py-10 t-meta`}>
-      <p className="col-span-12 m-0 md:col-span-6">Archie Editor is free and open source. <a href={REPO_URL} className="font-bold text-ink underline underline-offset-4 hover:text-signal">Source on GitHub</a>.</p>
+      <p className="col-span-12 m-0 md:col-span-6">Archie Editor is open source. <a href={REPO_URL} className="font-bold text-ink underline underline-offset-4 hover:text-signal">Source on GitHub</a>.</p>
       <p className="col-span-12 m-0 mt-2 text-muted md:col-span-6 md:mt-0 md:text-right">ArchieML is an open format from <a href="https://archieml.org" className="font-bold text-ink underline underline-offset-4 hover:text-signal">archieml.org</a>. Not affiliated with Google or the ArchieML authors.</p>
     </footer>
   </>

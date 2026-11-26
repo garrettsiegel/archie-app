@@ -1,33 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#3d8a63"/>
-      <stop offset="1" stop-color="#1f4d36"/>
-    </linearGradient>
-    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
-      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
-    </linearGradient>
     <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
       <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity="0.3"/>
     </filter>
   </defs>
   <!-- macOS icon grid: 824px tile centered in 1024 canvas -->
   <g filter="url(#shadow)">
-    <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/>
+    <rect x="100" y="100" width="824" height="824" rx="185" fill="#d62e0b"/>
   </g>
-  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#sheen)"/>
   <!-- document page -->
-  <rect x="300" y="230" width="424" height="564" rx="40" fill="#f6f3ea"/>
+  <rect x="300" y="230" width="424" height="564" rx="40" fill="#ffffff"/>
   <!-- ArchieML lines -->
-  <g font-family="Menlo, monospace" font-weight="700" fill="#2f6f4f">
+  <g font-family="Menlo, monospace" font-weight="700" fill="#000000">
     <text x="345" y="345" font-size="78">{a}</text>
   </g>
-  <rect x="345" y="400" width="290" height="30" rx="15" fill="#c9c2ad"/>
-  <rect x="345" y="460" width="220" height="30" rx="15" fill="#c9c2ad"/>
-  <g font-family="Menlo, monospace" font-weight="700" fill="#2f6f4f">
+  <rect x="345" y="400" width="290" height="30" rx="15" fill="#d9d9d9"/>
+  <rect x="345" y="460" width="220" height="30" rx="15" fill="#d9d9d9"/>
+  <g font-family="Menlo, monospace" font-weight="700" fill="#d62e0b">
     <text x="345" y="590" font-size="78">[*]</text>
   </g>
-  <rect x="345" y="640" width="260" height="30" rx="15" fill="#c9c2ad"/>
-  <rect x="345" y="700" width="180" height="30" rx="15" fill="#c9c2ad"/>
+  <rect x="345" y="640" width="260" height="30" rx="15" fill="#d9d9d9"/>
+  <rect x="345" y="700" width="180" height="30" rx="15" fill="#d9d9d9"/>
 </svg>
