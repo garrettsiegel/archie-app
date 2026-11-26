@@ -20,7 +20,7 @@ Archie Editor is a Mac app for writing ArchieML in Google Docs. It shows a Googl
 
 ## Positioning
 
-Works inside the real Google Doc (no copy-paste, no new editor to learn), signed in with the user's own Google account. Live preview loads the project's own test page fed with the unpublished doc, so the project's own validation runs before anything ships.
+An all-in-one ArchieML tool that works inside the real Google Doc (no typing ArchieML by hand, no Apps Script, no copy-paste, no new editor to learn), signed in with the user's own Google account. Live preview loads the project's own test page fed with the unpublished doc, so the project's own validation runs before anything ships.
 
 ## Operating Context
 
@@ -57,7 +57,7 @@ App icon (build/icon.svg, build/icon.png). No user testimonials, customer logos,
 ## Product Principles
 
 1. Stay in the real doc: the tool goes to the writer, not the other way round.
-2. Catch mistakes before they ship, in plain language.
+2. All in one: snippets, templates, data, checks, preview and publishing in one app, instead of typing ArchieML by hand or building Apps Script tools. Mistakes are flagged in plain language.
 3. One app replaces the debug dashboard for content checks.
 4. Honest about rough edges (unsigned app, Mac only).
 

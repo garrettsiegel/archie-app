@@ -53,9 +53,9 @@ export const App = () => (
           <span className="block">Google Docs.</span>
         </h1>
         <div className="col-span-12 mt-8 grid grid-cols-12 gap-x-4 gap-y-5 border-t border-ink pt-6">
-          <p className="t-lead col-span-12 m-0 text-signal md:col-span-4">Catch mistakes before they ship.</p>
+          <p className="t-lead col-span-12 m-0 text-signal md:col-span-4">Every ArchieML tool, in one app.</p>
           <p className="t-body col-span-12 m-0 md:col-span-5">
-            A standalone app for macOS, not a browser extension or Docs add-on. Your Google Doc opens inside it, beside the tools you need.
+            A standalone Mac app with your Google Doc inside. Snippets, templates, live data, checks and publishing sit right beside it, so nothing is typed by hand or rigged up in Apps Script.
           </p>
           <div className="col-span-12 flex flex-col items-start gap-2 md:col-span-3 md:items-end">
             <DownloadButton />
@@ -66,7 +66,7 @@ export const App = () => (
           </div>
         </div>
         <figure className="col-span-12 m-0 mt-12 grid grid-cols-12 gap-x-4 gap-y-3">
-          <figcaption className="t-title col-span-12 md:col-span-3">Two mistakes, caught before they reach the page.</figcaption>
+          <figcaption className="t-title col-span-12 md:col-span-3">Checks run as you type, right beside the doc.</figcaption>
           <div className="col-span-12 md:col-span-9"><HeroShot /></div>
         </figure>
       </section>

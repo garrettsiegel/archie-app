@@ -124,7 +124,7 @@ Confirmed rejections: soft SaaS gradients, card rows, themed costumes (a type-ca
 Pure black and white, one hot orange, and a quoted dark palette that belongs to the app, not the page.
 
 ### Primary
-- **Signal Orange** (#d62e0b): the download button fill, the hero promise line ("Catch mistakes before they ship."), and the install step numerals. Also the interaction color: link hover text, the focus ring, text selection. White on it passes 4.5:1 (4.94:1), and it passes on white. It does not pass on black for small text (4.25:1), so on the black install band it is used only at numeral scale or as a fill.
+- **Signal Orange** (#d62e0b): the download button fill, the hero promise line ("Every ArchieML tool, in one app."), and the install step numerals. Also the interaction color: link hover text, the focus ring, text selection. White on it passes 4.5:1 (4.94:1), and it passes on white. It does not pass on black for small text (4.25:1), so on the black install band it is used only at numeral scale or as a fill.
 
 ### Neutral
 - **Poster White** (#ffffff): the page ground and the text on the install band.
