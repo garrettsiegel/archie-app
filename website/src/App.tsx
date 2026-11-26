@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Screenshot } from './components/Art'
 import { LabeledDemo } from './components/LabeledDemo'
+import { SpecSheet } from './components/SpecSheet'
 import { DownloadButton } from './components/DownloadButton'
 import { GitHubIcon } from './components/icons'
 import { DOWNLOAD_SIZE, REPO_URL, VERSION } from './config'
@@ -15,15 +16,6 @@ const SectionHead = ({ id, title, aside }: { id: string; title: string; aside?: 
     {aside && <div className="col-span-12 mt-4 text-lg leading-snug font-medium md:col-span-4 md:mt-2">{aside}</div>}
   </div>
 )
-
-const MORE = [
-  ['Quick insert', '⌘⇧K, type a few letters, Enter.'],
-  ['Wrap a selection', 'Highlight text, pick a block.'],
-  ['Your own snippets', 'Save the blocks you write every day.'],
-  ['Outline', 'Every object and list, one click away.'],
-  ['Light and dark', 'Follows your Mac’s appearance.'],
-  ['Make room', 'Drag the sidebar and preview to any width.'],
-]
 
 const STEPS: { title: string; body: ReactNode }[] = [
   { title: 'Download', body: <>Get the installer ({DOWNLOAD_SIZE}). Apple Silicon and Intel.</> },
@@ -78,14 +70,7 @@ export const App = () => (
         <div className="col-span-12 mt-10">
           <LabeledDemo />
         </div>
-        <dl className="col-span-12 mt-20 mb-0 grid grid-cols-12 gap-x-4 border-t-4 border-ink pt-5">
-          {MORE.map(([title, body]) => (
-            <div key={title} className="col-span-6 mb-6 md:col-span-4 lg:col-span-2">
-              <dt className="text-lg leading-tight font-black tracking-[-0.02em]">{title}</dt>
-              <dd className="m-0 mt-1 text-[15px] leading-snug font-medium text-muted">{body}</dd>
-            </div>
-          ))}
-        </dl>
+        <SpecSheet />
       </section>
 
       <section id="install" aria-labelledby="install-title" className="mt-24 bg-ink text-paper sm:mt-32">
