@@ -2,9 +2,11 @@ import type { ReactNode } from 'react'
 import { HeroShot } from './components/Art'
 import { LabeledDemo } from './components/LabeledDemo'
 import { SpecSheet } from './components/SpecSheet'
-import { DownloadButton } from './components/DownloadButton'
+import { InstallButton } from './components/InstallButton'
+import { InstallCommand } from './components/InstallCommand'
 import { GitHubIcon } from './components/icons'
 import { DOWNLOAD_SIZE, REPO_URL, VERSION } from './config'
+import { TerminalIcon } from './components/icons'
 
 // International-style poster: a strict 12-column grid, giant black type,
 // 4px black rules, and one signal orange for the action and the promise.
@@ -17,11 +19,11 @@ const SectionHead = ({ id, title, aside }: { id: string; title: string; aside?: 
   </div>
 )
 
+const KEY = 'rounded-sm border border-paper/60 px-1 font-mono text-[0.9em]'
 const STEPS: { title: string; body: ReactNode }[] = [
-  { title: 'Download', body: <>Get the installer ({DOWNLOAD_SIZE}). Apple Silicon and Intel.</> },
-  { title: 'Drag to Applications', body: 'Open the .dmg and drag Archie Editor into Applications.' },
-  { title: 'Allow it once', body: <>It isn’t signed with an Apple Developer ID yet, so macOS blocks the first launch. Open <strong>System Settings → Privacy &amp; Security</strong> and click <strong>Open Anyway</strong>.</> },
-  { title: 'Sign in to Google', body: 'Use your own account. Your login, servers and snippets stay on your Mac.' },
+  { title: 'Open Terminal', body: <>Press <kbd className={KEY}>⌘</kbd> <kbd className={KEY}>Space</kbd>, type <strong>Terminal</strong>, press Return.</> },
+  { title: 'Paste and press Return', body: <>It downloads the newest version ({DOWNLOAD_SIZE}) into Applications and opens it. No security&nbsp;prompt.</> },
+  { title: 'Sign in to Google', body: 'Use your own account. Your login, servers, snippets and templates stay on your Mac.' },
 ]
 
 export const App = () => (
@@ -39,7 +41,7 @@ export const App = () => (
           <a href="#features" className="hidden text-ink no-underline hover:text-signal lg:inline">Features</a>
           <a href="#install" className="hidden text-ink no-underline hover:text-signal lg:inline">Install</a>
           <a href={REPO_URL} className="flex items-center gap-1.5 text-ink no-underline hover:text-signal"><GitHubIcon className="size-4" /><span className="hidden sm:inline">GitHub</span></a>
-          <DownloadButton size="sm" />
+          <InstallButton size="sm" />
         </nav>
         <div className="col-span-12 mt-3 h-px bg-ink" />
       </div>
@@ -58,10 +60,10 @@ export const App = () => (
             A standalone Mac app with your Google Doc inside. Snippets, templates, live data, checks and publishing sit right beside it, so nothing is typed by hand or rigged up in Apps Script.
           </p>
           <div className="col-span-12 flex flex-col items-start gap-2 md:col-span-3 md:items-end">
-            <DownloadButton />
+            <InstallButton />
             <p className="t-meta m-0 text-muted md:text-right">
-              <span className="block">Version {VERSION} · {DOWNLOAD_SIZE}</span>
-              <span className="block">Apple Silicon and Intel</span>
+              <span className="block">One line in Terminal, no security prompt</span>
+              <span className="block">Version {VERSION} · Apple Silicon and Intel</span>
             </p>
           </div>
         </div>
@@ -82,16 +84,20 @@ export const App = () => (
       <section id="install" aria-labelledby="install-title" className="mt-24 bg-ink text-paper sm:mt-32">
         <div className={`${grid} py-14 sm:py-20`}>
           <h2 id="install-title" className="t-section col-span-12 m-0">Install in a minute.</h2>
-          <ol className="col-span-12 mt-10 mb-0 grid list-none grid-cols-12 gap-x-4 gap-y-10 p-0">
+          <div id="install-command" className="col-span-12 mt-10 grid scroll-mt-28 grid-cols-12 gap-x-4 gap-y-4 border-t border-paper pt-4">
+            <h3 className="t-title col-span-12 m-0 flex gap-3 md:col-span-3"><span className="text-signal tabular-nums">1</span>Copy this&nbsp;line</h3>
+            <div className="col-span-12 min-w-0 md:col-span-9"><InstallCommand /></div>
+          </div>
+          <ol start={2} className="col-span-12 mt-10 mb-0 grid list-none grid-cols-12 gap-x-4 gap-y-10 p-0">
             {STEPS.map((s, i) => (
-              <li key={s.title} className="col-span-12 border-t border-paper pt-4 sm:col-span-6 lg:col-span-3">
-                <h3 className="t-title m-0 flex gap-3"><span className="text-signal tabular-nums">{i + 1}</span>{s.title}</h3>
+              <li key={s.title} className="col-span-12 border-t border-paper pt-4 sm:col-span-4">
+                <h3 className="t-title m-0 flex gap-3"><span className="text-signal tabular-nums">{i + 2}</span>{s.title}</h3>
                 <p className="t-body mt-2 mb-0 text-paper/85">{s.body}</p>
               </li>
             ))}
           </ol>
           <div className="col-span-12 mt-12 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-            <DownloadButton onDark />
+            <span className="t-meta flex items-center gap-2 text-paper/75"><TerminalIcon className="size-4" />Why Terminal? macOS blocks apps downloaded in a browser until they carry a paid Apple signature. Installing this way avoids that step.</span>
             <a href={`${REPO_URL}/releases`} className="t-meta font-bold text-paper underline underline-offset-4 hover:text-signal">All versions and release notes</a>
           </div>
         </div>

@@ -8,7 +8,7 @@ web (the download site). The product itself is a macOS desktop app built with El
 
 ## Stack
 
-Download site: Vite + React + TypeScript + Tailwind CSS + Motion (motion.dev); Zustand/Valibot only if needed. Lives in `website/`. Hosted on GitHub Pages; the installer is a GitHub Release asset on the same public repo.
+Download site: Vite + React + TypeScript + Tailwind CSS + Motion (motion.dev); Zustand/Valibot only if needed. Lives in `website/`. Hosted on GitHub Pages; the installer is a GitHub Release asset on the same public repo (Archie-Editor.dmg), fetched by website/public/install.sh. The site's only install path is that one Terminal line; there is no .dmg download button.
 
 ## Users
 
@@ -42,7 +42,7 @@ Confirmed features:
 
 Constraints:
 - macOS only (universal: Apple Silicon and Intel). About 220 MB download.
-- Not signed with an Apple Developer ID yet: first launch needs System Settings → Privacy & Security → Open Anyway. Say so plainly.
+- Not signed with an Apple Developer ID yet. Installing with the Terminal command avoids the macOS block (curl downloads aren't quarantined); a browser-downloaded .dmg would need Open Anyway. Say so plainly.
 - Open source on GitHub (license not decided). Do not call it "free" in copy.
 - Not affiliated with Google or ArchieML's authors; do not use their logos or imply endorsement.
 
