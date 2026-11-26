@@ -2,242 +2,246 @@
 name: Archie Editor
 description: Download site for a free Mac app that writes and checks ArchieML in Google Docs.
 colors:
-  paper: "#fafaf9"
-  panel: "#ffffff"
-  wash: "#f2f3f1"
-  sidebar: "#f4f3ef"
-  ink: "#111312"
-  ink-2: "#3c403e"
-  muted: "#5f6562"
-  line: "#e3e5e2"
-  line-strong: "#c9ccc8"
-  green: "#2f6f4f"
-  green-ink: "#245a3f"
-  green-tint: "#e6f0ea"
-  red: "#b3261e"
-  red-tint: "#fbeae8"
+  signal: "#d62e0b"
+  paper: "#ffffff"
+  ink: "#000000"
+  ink-2: "#262626"
+  muted: "#555555"
+  app-bg: "#1c1c1a"
+  app-panel: "#262624"
+  app-text: "#ecebe6"
+  app-muted: "#a3a198"
+  app-line: "#3a3936"
+  app-accent: "#7cc09a"
 typography:
   display:
-    fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, Segoe UI, Roboto, Helvetica Neue, sans-serif"
-    fontSize: "clamp(2.3rem, 5.2vw, 3.9rem)"
-    fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: "-0.035em"
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(2.9rem, 8.4vw, 8.2rem)"
+    fontWeight: 900
+    lineHeight: 0.86
+    letterSpacing: "-0.055em"
   headline:
-    fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, Segoe UI, Roboto, Helvetica Neue, sans-serif"
-    fontSize: "clamp(1.9rem, 4vw, 2.75rem)"
-    fontWeight: 700
-    lineHeight: 1.25
-    letterSpacing: "-0.03em"
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(2.2rem, 5vw, 4.5rem)"
+    fontWeight: 900
+    lineHeight: 0.9
+    letterSpacing: "-0.05em"
   title:
-    fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Display, Segoe UI, Roboto, Helvetica Neue, sans-serif"
-    fontSize: "1.5rem"
-    fontWeight: 600
-    letterSpacing: "-0.02em"
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)"
+    fontWeight: 900
+    lineHeight: 0.98
+    letterSpacing: "-0.04em"
+  promise:
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.6rem, 2.6vw, 2.1rem)"
+    fontWeight: 900
+    lineHeight: 1.25
+    letterSpacing: "-0.035em"
+  numeral:
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "3.75rem"
+    fontWeight: 900
+    lineHeight: 1
+    letterSpacing: "-0.05em"
+    fontFeature: "tnum"
   lead:
-    fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Text, Segoe UI, Roboto, Helvetica Neue, sans-serif"
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
     fontSize: "1.125rem"
-    fontWeight: 400
-    lineHeight: 1.625
+    fontWeight: 500
+    lineHeight: 1.375
   body:
-    fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Text, Segoe UI, Roboto, Helvetica Neue, sans-serif"
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
     fontSize: "17px"
-    fontWeight: 400
-    lineHeight: 1.625
+    fontWeight: 500
+    lineHeight: 1.375
   body-sm:
-    fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Text, Segoe UI, Roboto, Helvetica Neue, sans-serif"
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
     fontSize: "15px"
-    fontWeight: 400
-    lineHeight: 1.625
+    fontWeight: 500
+    lineHeight: 1.375
+  label:
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "14px"
+    fontWeight: 700
   caption:
-    fontFamily: "-apple-system, BlinkMacSystemFont, SF Pro Text, Segoe UI, Roboto, Helvetica Neue, sans-serif"
+    fontFamily: "Archivo Variable, Helvetica Neue, Arial, sans-serif"
     fontSize: "13px"
-    fontWeight: 400
-  code:
-    fontFamily: "ui-monospace, SF Mono, Menlo, Consolas, monospace"
-    fontSize: "13px"
+    fontWeight: 500
+  mono:
+    fontFamily: "ui-monospace, SF Mono, Menlo, monospace"
+    fontSize: "12.5px"
     fontWeight: 600
 rounded:
-  sm: "0.25rem"
-  md: "0.375rem"
-  lg: "0.5rem"
-  xl: "0.75rem"
-  3xl: "1.5rem"
-  full: "9999px"
+  none: "0px"
+  app-window: "12px"
 spacing:
-  gutter: "20px"
-  gutter-sm: "32px"
-  container: "72rem"
-  section: "112px"
-  section-sm: "144px"
-  spotlight-gap: "80px"
+  gutter: "16px"
+  page-x: "20px"
+  page-x-wide: "32px"
+  row-gap: "56px"
+  row-gap-wide: "80px"
+  section-gap: "96px"
+  section-gap-wide: "128px"
 components:
-  button-primary:
-    backgroundColor: "{colors.green}"
-    textColor: "{colors.panel}"
-    rounded: "{rounded.full}"
-    padding: "12px 24px"
-  button-primary-hover:
-    backgroundColor: "{colors.green-ink}"
-  button-primary-sm:
-    backgroundColor: "{colors.green}"
-    textColor: "{colors.panel}"
-    rounded: "{rounded.full}"
-    padding: "6px 16px"
-  button-quiet:
-    backgroundColor: "{colors.panel}"
-    textColor: "{colors.ink-2}"
-    rounded: "{rounded.md}"
-    padding: "4px 10px"
-  segmented-tab-active:
-    backgroundColor: "{colors.green-tint}"
-    textColor: "{colors.green-ink}"
-    rounded: "{rounded.md}"
-    padding: "4px 8px"
-  app-window:
-    backgroundColor: "{colors.panel}"
-    rounded: "{rounded.xl}"
-  ui-fragment:
-    backgroundColor: "{colors.sidebar}"
-    rounded: "{rounded.xl}"
-    padding: "12px"
-  install-panel:
-    backgroundColor: "{colors.wash}"
-    rounded: "{rounded.3xl}"
-    padding: "64px 48px"
-  step-number:
+  button-download:
+    backgroundColor: "{colors.signal}"
+    textColor: "{colors.paper}"
+    typography: "{typography.label}"
+    rounded: "{rounded.none}"
+    padding: "14px 20px"
+  button-download-hover:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.panel}"
-    rounded: "{rounded.full}"
-    size: "32px"
+    textColor: "{colors.paper}"
+  button-download-sm:
+    backgroundColor: "{colors.signal}"
+    textColor: "{colors.paper}"
+    typography: "{typography.label}"
+    rounded: "{rounded.none}"
+    padding: "6px 12px"
+  nav-link:
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+  nav-link-hover:
+    textColor: "{colors.signal}"
+  install-band:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    rounded: "{rounded.none}"
+  app-window:
+    backgroundColor: "{colors.app-bg}"
+    textColor: "{colors.app-text}"
+    rounded: "{rounded.app-window}"
 ---
 
 # Design System: Archie Editor
 
 ## Overview
 
-**Creative North Star: "The Product on a Clean Desk"**
+**Creative North Star: "The Swiss Poster"**
 
-A conventional, quiet Mac-app download page: near-white ground, true ink text, and the app itself as the hero. The page makes no world of its own; the drawn Archie Editor window carries the identity, and everything around it stays out of its way. Density is low, spacing is generous, and the only color that speaks is the app's own green.
+The site is an International-style poster for a Mac app: a strict 12-column grid, giant black Archivo set tight, pure white ground, pure black type and 4px black rules. It says plainly what the product is and then shows the product. Density is low; scale and rule weight do the organizing, not boxes.
 
-The owner tried a themed wood/type-case direction and rejected it in favor of the category standard. Texture, costume, and decorative motifs are out; correctness, restraint, and real product UI are in.
+Everything that belongs to the page is flat, square and black-and-white. The only soft objects are the app's own images: real dark-theme screenshots, close-up crops of them, and drawn dark-theme fragments and demo, each rounded and shadowed like a macOS window. That contrast (hard poster, soft product) is the system. One signal orange carries the download action and the promise line.
+
+Confirmed rejections: soft SaaS gradients, card rows, themed costumes (a type-case world was built and rejected), and the earlier clean/light system-font look.
 
 **Key Characteristics:**
-- Near-white paper ground with cool gray hairlines.
-- One accent (app green) for actions and valid states; red only for issues.
-- Apple system type throughout; system mono for ArchieML.
-- A working, drawn macOS window as the hero; real app screenshots as feature art, with drawn dark-theme fragments only where a screenshot needs private material.
-- Soft layered shadow on the window only; everything else flat.
+- Strict 12-column grid; every block snaps to column spans.
+- Archivo black (900) display at poster scale with negative tracking.
+- Pure #fff / #000 with 4px black rules as the main structural device.
+- One signal orange, for the download and the promise.
+- Square page chrome; only app imagery is rounded and shadowed.
+- Feature rows vary grid placement and crop so no two look alike.
 
 ## Colors
 
-A neutral, faintly green-gray palette with a single deep green accent and a single red for problems.
+Pure black and white, one hot orange, and a quoted dark palette that belongs to the app, not the page.
 
 ### Primary
-- **Archie Green** (green): download buttons, skip link, focus ring, valid status dot, snippet labels, highlighted inserted text. The app's own brand color.
-- **Deep Green** (green-ink): hover state for green buttons and green text on the light tint (active tab, valid label).
-- **Green Mist** (green-tint): active segmented tab, text selection, the fade-in flash on newly inserted doc lines.
-
-### Semantic
-- **Issue Red** (red): error dots, issue counts, issue messages, wavy underline on bad lines. Never decorative.
-- **Red Mist** (red-tint): defined in the theme for issue backgrounds; not yet used on the page.
+- **Signal Orange** (#d62e0b): the download button fill, the hero promise line ("Catch mistakes before they ship."), and the install step numerals. Also the interaction color: link hover text, the focus ring, text selection. White on it passes 4.5:1 (4.94:1), and it passes on white. It does not pass on black for small text (4.25:1), so on the black install band it is used only at numeral scale or as a fill.
 
 ### Neutral
-- **Paper** (paper): page background and sticky header (at 80% with blur).
-- **Panel** (panel): app window body, cards inside fragments, white surfaces.
-- **Wash** (wash): window title bar and the install panel.
-- **Sidebar Stone** (sidebar): the app sidebar and the issues/publish fragments, matching the real app's sidebar. Currently hardcoded in components, not in the theme.
-- **Ink** (ink): headings and primary text; also the dark live-preview pane and step-number circles.
-- **Ink 2** (ink-2): nav links, secondary UI text, code in panels.
-- **Muted** (muted): body copy under headings, captions, hints.
-- **Line / Line Strong** (line, line-strong): hairline borders and dividers; strong for input outlines and quiet-button hover.
+- **Poster White** (#ffffff): the page ground and the text on the install band.
+- **Poster Black** (#000000): all display and body type, the 4px rules, the 1px feature-row rules, and the inverted install band.
+- **Body Graphite** (#262626): feature body copy, one step off black to soften long reading.
+- **Footnote Grey** (#555555): version/size line, spec-list descriptions, footer secondary text (7.46:1 on white).
+
+### App Palette (quoted, not page colors)
+- **App Charcoal** (#1c1c1a), **App Panel** (#262624), **App Bone** (#ecebe6), **App Stone** (#a3a198), **App Seam** (#3a3936), **App Mint** (#7cc09a): Archie Editor's own dark-theme values, copied from the app's sidebar stylesheet. Used only inside the demo window and the drawn Preview/Publish fragments so they read as the real app.
 
 ### Named Rules
-**The One Green Rule.** Green is the only accent. It marks things you can do (download, insert) and things that are right (valid). Nothing else is colored.
+**The One Signal Rule.** Orange is the only hue on the page chrome. As a fill it appears only on the download button; as type only on the promise line and the install numerals. Never a tint, gradient, border or decoration.
 
-**The Red Means Wrong Rule.** Red appears only where the doc has a problem. If nothing is broken, no red is on screen.
+**The Quoted Palette Rule.** App colors never leave the app imagery. Mint is the app's accent, not a second brand color.
 
 ## Typography
 
-**Display Font:** SF Pro Display via `-apple-system` (Segoe UI, Roboto, Helvetica Neue fallbacks)
-**Body Font:** SF Pro Text via `-apple-system`
-**Label/Mono Font:** SF Mono via `ui-monospace` (Menlo, Consolas)
+**Display Font:** Archivo Variable (with Helvetica Neue, Arial)
+**Body Font:** Archivo Variable, medium/bold weights
+**Label/Mono Font:** system mono (ui-monospace, SF Mono, Menlo), only inside app imagery
 
-**Character:** The Mac's own voice. Bold, tightly tracked headlines over plain, roomy body text; mono only where ArchieML or file paths appear.
+**Character:** One grotesque family doing everything, from 900-weight poster headlines down to 500-weight captions. Tight leading and negative tracking at large sizes; body stays medium weight so it holds up against the black display.
 
 ### Hierarchy
-- **Display** (700, clamp 2.3–3.9rem, 1.05, -0.035em): the hero headline only; second line in green.
-- **Headline** (700, clamp 1.9–2.75rem, 1.25, -0.03em): section headings.
-- **Title** (600, 1.5rem, -0.02em): feature spotlight headings; install step titles drop to 1.125rem.
-- **Lead** (400, 1.125rem, 1.625): hero pitch, muted, max ~36rem.
-- **Body** (400, 17px, 1.625): spotlight copy, muted, max ~28rem. 15px for feature-list and step text.
-- **Caption** (400, 13px): version line, demo note, window title.
-- **Code** (mono, 12–13px, 600 for labels): ArchieML lines, snippet names, paths.
+- **Display** (900, clamp(2.9rem, 8.4vw, 8.2rem), 0.86): the hero headline only, spanning all 12 columns. Oversized on purpose: it is the poster.
+- **Headline** (900, clamp(2.2rem, 5vw, 4.5rem), 0.9): section heads ("Everything an ArchieML doc needs.", "Try it here.", "Install in a minute.").
+- **Title** (900, clamp(1.6rem, 2.8vw, 2.4rem), 0.98): feature row titles.
+- **Promise** (900, clamp(1.6rem, 2.6vw, 2.1rem), tight, signal orange): the single promise line under the hero rule.
+- **Numeral** (900, 3.75rem, 1, tabular): install step numbers.
+- **Lead** (500, 1.125rem, 1.375): hero pitch and section-head asides.
+- **Body** (500, 17px, 1.375, max ~24rem): feature descriptions.
+- **Body-sm** (500, 15px): spec-list descriptions; spec-list terms are 18px 900.
+- **Label** (700, 14px): nav links, download button (16px on the large button), footer links.
+- **Caption** (500, 13px, grey): version, size, architecture line.
 
 ### Named Rules
-**The System Voice Rule.** Use the Apple system stack for all text. Headings balance-wrap, body pretty-wraps.
+**The Black Weight Rule.** Every heading is weight 900 with negative tracking (-0.02em to -0.055em, tighter as size grows). No light or regular display weights.
+
+**The One Family Rule.** Archivo carries the whole page. Mono appears only where the app itself shows code.
 
 ## Layout
 
-Single centered column, max 72rem, side padding 20px (32px from 640px up). The hero is centered text; everything below is left-aligned. Sections open with 112px of top space (144px from 640px up). Feature spotlights are two-column from 768px with the art alternating sides, 64px column gap, 80–96px between rows. Supporting features sit in a 1/2/3-column definition list under a hairline rule. Install steps run 1/2/4 columns inside a rounded wash panel. Breakpoints are Tailwind's defaults (640, 768, 1024). The header is sticky, 56px tall, translucent paper with a backdrop blur.
+A 12-column grid (16px gutter) inside a 1280px max container with 20px side padding (32px from 640px). Every section, header and footer uses the same grid; nested blocks re-declare 12 columns so spans stay aligned.
+
+- **Folio strip:** sticky header, 4-col name / 4-col subject line / 4-col nav, closed by a full-width 4px black rule.
+- **Hero:** 12-col headline; a 4px rule; then promise (5 cols) / pitch (4) / download (3); the screenshot below spans 11 then 10 centered columns.
+- **Feature rows:** each row opens with a 1px black rule and places text (4 cols) and close-up (4 to 8 cols) differently: text-left or text-right, art narrow or wide, offset starts. No two rows share a placement.
+- **Spec list:** 6 short items, 2 per row on mobile, 3 at md, 6 across at lg.
+- **Install band:** full-bleed black; four steps in 3-column spans at lg, each topped by a 4px white rule.
+- **Rhythm:** sections 96px apart (128px from 640px); feature rows 56px (80px). Everything collapses to 12-col full width on mobile.
 
 ## Elevation & Depth
 
-Flat by default. Depth comes from tonal steps (paper, wash, sidebar stone, panel) and hairlines. Shadows are reserved for objects that depict real macOS things.
+The page is flat. Depth exists only in the app imagery, where it mimics a macOS window.
 
 ### Shadow Vocabulary
-- **Window** (`0 0 0 1px rgb(17 19 18 / 0.08), 0 2px 4px rgb(17 19 18 / 0.04), 0 12px 24px rgb(17 19 18 / 0.06), 0 40px 80px -20px rgb(17 19 18 / 0.18)`): the drawn app window only.
-- **Button** (`0 1px 2px rgb(17 19 18 / 0.2), inset 0 1px 0 rgb(255 255 255 / 0.15)`): green download button; a small lift and top highlight.
-- **Doc page** (`0 1px 3px rgb(17 19 18 / 0.12)`): the drawn Google Doc page inside the window.
+- **App window** (`box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), 0 24px 60px -20px rgb(0 0 0 / 0.35)`): the interactive demo window.
+- **App fragment** (`box-shadow: 0 24px 40px rgb(17 19 18 / 0.18)`): the drawn Preview and Publish fragments.
 
 ### Named Rules
-**The Only the Window Floats Rule.** The big layered shadow belongs to the product window. Cards, panels, and sections stay flat.
+**The Flat Poster Rule.** Page chrome never casts a shadow. Rules and inversion, not elevation, separate content.
 
 ## Shapes
 
-Rounded, Mac-like corners. Pills (full) for action buttons, status counts, and step numbers. 12px for the window and feature fragments, 8px for rows inside them, 6px for tabs and small buttons, 24px for the install panel, 4px for the drawn doc page. Borders are 1px hairlines in line color.
+Square everywhere on the page: buttons, bands, rules, focus ring (3px orange outline, 3px offset). The 12px window radius belongs to app imagery only (demo window, fragments, and the corners drawn into the screenshots). Rules come in two weights: 4px for section and folio breaks, 1px between feature rows.
+
+**The Square Chrome Rule.** If it belongs to the page, it has no radius. If it has a radius, it is a picture of the app.
 
 ## Components
 
 ### Buttons
-- **Shape:** pill (full radius).
-- **Primary (Download for Mac):** green fill, white 600 text, download icon, 12px x 24px (large) or 6px x 16px (header). Small size shortens to "Download" on phones.
-- **Hover / Focus:** fill darkens to deep green; focus shows the global 2px green outline, 3px offset.
-- **Quiet (Undo / Reset in demo):** white with hairline border, ink-2 text, 6px radius; border strengthens on hover.
-- **Text links:** ink or ink-2, underlined with 4px offset; nav links are plain and darken to ink on hover.
-
-### Segmented Tabs
-- **Style:** white track with hairline border, 8px radius, 2px inset; tabs 6px radius, 13px medium.
-- **State:** active is green mist with deep-green text; inactive is muted, darkening on hover. Issues tab carries a red pill count when invalid.
-
-### Cards / Containers
-- **UI fragments:** sidebar-stone or split panels, 12px radius, hairline border, white 8px-radius rows inside. They are drawn pieces of the real app, not generic feature cards.
-- **Install panel:** wash fill, 24px radius, no border, no shadow.
+Blunt and loud: a square orange block.
+- **Shape:** square (0px).
+- **Download (large):** signal fill, white 16px bold text, download icon at 20px, 14px 20px padding. Used in the hero and the install band.
+- **Download (small):** same block at 14px text, 6px 12px padding, in the folio strip; label shortens to "Download" on mobile.
+- **Hover / Focus:** fill turns black (color transition); focus is the global 3px orange ring.
+- There is no secondary button. Secondary actions are bold underlined text links (4px underline offset) that turn orange on hover.
 
 ### Navigation
-- Sticky header: app icon (28px) and name on the left; Features, Install, GitHub, and a small download button on the right. Section links hide below 640px; GitHub collapses to its icon.
+Folio strip: app icon and name in 900 weight, a centered uppercase bold subject line ("ArchieML · Google Docs · macOS") from 640px, then bold 14px links (Features and Install from 1024px, GitHub with icon) and the small download. Links are black, orange on hover. Background is 95% white with a blur so the 4px rule stays crisp over scrolled content.
 
-### App Window (signature)
-A working drawn copy of Archie Editor in the app's real dark theme (sidebar/sidebar.css values: #1c1c1a ground, #262624 panels, #7cc09a accent, #e3a83a issue count). macOS traffic lights sit inside the sidebar (hidden-inset title bar), then the app header (icon nav, doc title, green Preview pill), the five tabs (Insert, Data, Issues, Outline, Publish) and the Insert panel; a drawn Google Docs page (no logos) fills the right. Clicking a snippet appends lines with a brief green flash; problem lines get a red wavy underline. The sidebar fills the window below 768px.
+### Section Head
+A 4px black rule, then a headline across 8 columns and an optional 4-column lead aside.
 
-### Screenshots
-Feature sections use real captures of the app (website/public/screens, provenance in PROVENANCE.md): cropped to the sidebar and the left of the doc, 1000x640 points at 1x and 2x, WebP. Preview and Publish are drawn in the same dark theme because they need a private page or server to capture.
+### Feature Row
+1px top rule, title plus body in 4 columns, and one close-up crop (Insert list, Data JSON, Issues list) or drawn fragment (Preview, Publish), each placed in a different column range.
 
-
-### Motion
-Sections reveal once on scroll (fade + 16px rise, 0.6s, ease `cubic-bezier(0.16, 1, 0.3, 1)`). All motion and smooth scrolling turn off under reduced motion.
+### App Imagery (signature)
+Real dark-theme screenshots (provenance in website/public/screens/PROVENANCE.md), close-ups cut from the same captures, and drawn fragments and a working demo in the app's quoted palette. The demo is a full window (600px tall, 400px sidebar) with a drawn Google Docs page; inserted lines flash mint for 1.2s unless reduced motion is set.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** let the drawn product window be the hero and the drawn app fragments be the feature art.
-- **Do** keep green for actions and valid states, and red for issues only.
-- **Do** use the Apple system stack for text and system mono for ArchieML.
-- **Do** keep surfaces flat; save the layered shadow for the window.
-- **Do** keep every motion behind a reduced-motion check.
+- **Do** snap every block to the 12-column grid and vary placements between repeated rows.
+- **Do** separate sections with 4px black rules (white on the black band) and feature rows with 1px rules.
+- **Do** set all headings in Archivo 900 with negative tracking.
+- **Do** keep orange to the download fill, the promise line and the install numerals, plus hover, focus and selection states.
+- **Do** show the product with real screenshots or crops, and record their provenance.
 
 ### Don't:
-- **Don't** add themed textures or costume worlds (wood, type cases, paper grain); the owner rejected that direction.
-- **Don't** replace the drawn product with rows of generic icon feature cards.
-- **Don't** introduce a second accent color.
-- **Don't** invent testimonials, logos, or download numbers to fill space.
+- **Don't** round or shadow page chrome; radius and shadow mean "this is the app".
+- **Don't** use app palette colors (mint, charcoal) outside app imagery.
+- **Don't** add a second accent hue, gradients or tinted panels to the page.
+- **Don't** build card rows or repeat one feature-row layout.
+- **Don't** set orange small text on black; it fails contrast there.

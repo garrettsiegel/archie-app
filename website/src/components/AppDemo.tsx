@@ -47,6 +47,8 @@ const TABS = [
   { id: 'upload', label: 'Publish', icon: <g><path d="M8 11V2.5M4.5 6 8 2.5 11.5 6" /><path d="M2.5 10.5v3h11v-3" /></g> },
 ] as const
 type Tab = (typeof TABS)[number]['id']
+// Parts of the demo the page can label on hover (see LabeledDemo).
+const PART_FOR_TAB: Partial<Record<Tab, string>> = { data: 'data', issues: 'issues', upload: 'publish' }
 
 const SectionLabel = ({ children }: { children: ReactNode }) => (
   <div className="mx-1 mt-3.5 mb-1.5 text-[11px] font-bold tracking-[0.06em] uppercase" style={{ color: C.muted }}>{children}</div>
@@ -79,7 +81,7 @@ export const AppDemo = () => {
           </div>
           <div className="mt-2 flex items-center gap-2">
             <span className="min-w-0 flex-1 truncate" style={{ color: C.muted }}>Summer lineup</span>
-            <span className="inline-flex min-h-7 items-center gap-1.5 rounded-full border py-1 pr-[11px] pl-[9px] text-[12.5px] font-semibold" style={{ borderColor: C.accent, background: C.soft, color: C.accent }}>
+            <span data-part="preview" className="inline-flex min-h-7 items-center gap-1.5 rounded-full border py-1 pr-[11px] pl-[9px] text-[12.5px] font-semibold" style={{ borderColor: C.accent, background: C.soft, color: C.accent }}>
               <Svg size={15} d={<g><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z" /><circle cx="8" cy="8" r="2" /></g>} />Preview
             </span>
           </div>
@@ -89,7 +91,7 @@ export const AppDemo = () => {
           {TABS.map((t) => {
             const on = tab === t.id
             return (
-              <button key={t.id} type="button" role="tab" aria-selected={on} onClick={() => setTab(t.id)}
+              <button key={t.id} type="button" role="tab" aria-selected={on} onClick={() => setTab(t.id)} data-part={PART_FOR_TAB[t.id]}
                 className="flex min-h-7 min-w-0 flex-1 cursor-pointer items-center justify-center gap-1 rounded-md border-0 px-0.5 py-[3px] text-[12px] whitespace-nowrap"
                 style={{ background: on ? C.soft : 'transparent', color: on ? C.accent : C.muted, fontWeight: on ? 650 : 500 }}>
                 <Svg size={13} d={t.icon} />{t.label}
@@ -113,6 +115,7 @@ export const AppDemo = () => {
               </div>
               <SectionLabel>My snippets</SectionLabel>
               <div className="px-1 py-1" style={{ color: C.accent }}>+ New snippet</div>
+              <div data-part="snippets">
               {GROUPS.map((g) => (
                 <div key={g.group}>
                   <SectionLabel>{g.group}</SectionLabel>
@@ -125,6 +128,7 @@ export const AppDemo = () => {
                   ))}
                 </div>
               ))}
+              </div>
             </>
           )}
           {tab === 'data' && <pre className="m-0 px-1 font-mono text-[12px] leading-normal whitespace-pre-wrap">{JSON.stringify(data, null, 2)}</pre>}

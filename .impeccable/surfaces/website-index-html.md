@@ -17,14 +17,14 @@ History: a type-case (wood and lead) world was built and rejected by the owner; 
 
 ## Direction contract
 
-THESIS: The category standard, executed impeccably: a clean Mac-app download page whose hero is the product itself, a working Archie Editor window. Refuses themed costumes and generic feature-card rows standing in for the product.
+THESIS: International-style poster for a Mac app: a strict 12-column grid, giant black type that says plainly what the product is, and the product itself shown in real screenshots. Refuses soft SaaS gradients, card rows and themed costumes.
 
-OWN-WORLD: Near-white ground (#fafaf9) with true ink (#111312) text, cool gray structure lines, and the app's own green (#2f6f4f, light tint #e6f0ea) as the single accent for actions and valid states; one warm red for issues. Apple system type (SF Pro via the system stack) for display and text, system mono for code. Real macOS window chrome, soft layered shadows, 12px radii.
+OWN-WORLD: Pure white ground, pure black type and 4px black rules; one signal orange (#d62e0b) only for the download action and the promise line. Archivo (variable) black for display and bold body; system mono for code. Square buttons, no radii on page chrome; the only rounded, shadowed objects are the app's own window images.
 
-STORY: Visitor sees the app working on a doc, believes it keeps them in Google Docs and catches mistakes before publishing, downloads for Mac, and knows the one-time Open Anyway step.
+STORY: Visitor reads in one line that this is a standalone Mac app for writing ArchieML in Google Docs, sees the real app, believes it catches mistakes before publishing, downloads, and knows the one-time Open Anyway step.
 
-FIRST VIEWPORT: Centered headline and one-line pitch, Download for Mac (version and size beside it), then a large drawn app window: sidebar with Insert/Data/Issues tabs and snippet buttons, a Google-Docs-like page of ArchieML, status pill. Clicking snippets edits the doc; the status flips from issue to valid.
+FIRST VIEWPORT: Folio strip with name, subject line and a small orange download; a black rule; the headline across all 12 columns at poster scale; a second rule; a three-column row of orange promise, pitch, and the orange Download for Mac with version and size; the real app screenshot starting below.
 
-FORM: canon (category standard, the standing exit), chosen after the dealt type-case direction was rejected. seed:0e2c790497827eec
+FORM: Swiss Poster, chosen by the owner from a six-option test page after the type-case and plain directions were rejected. seed:0e2c790497827eec
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

@@ -46,7 +46,7 @@ Constraints:
 
 ## Brand Commitments
 
-Look: the owner prefers a clean, modern, conventional product look over themed or textured worlds (tried a wood type-case direction and rejected it). Name: Archie Editor. App icon: green rounded square with a cream document showing `{a}` and `[*]` (build/icon.svg). Do not use any employer branding on the public site.
+Look: International-style (Swiss) poster: strict grid, giant black type, one signal orange. The owner rejected a wood type-case world and a plain conventional page before choosing this. Name: Archie Editor. App icon: green rounded square with a cream document showing `{a}` and `[*]` (build/icon.svg). Do not use any employer branding on the public site.
 
 ## Evidence on Hand
 
